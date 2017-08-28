@@ -11,7 +11,7 @@ interface
 
 uses
   SysUtils, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, LResources, ComCtrls, Buttons, Process,
+  Dialogs, ExtCtrls, StdCtrls, LResources, ComCtrls, Buttons, Menus, Process,
   inifiles, RTTICtrls, Classes;
 
 type
@@ -21,6 +21,10 @@ type
   TForm1 = class(TForm)
     Button2: TButton;
     Button3: TButton;
+    agviddriverw: TComboBox;
+    agviddriver: TComboBox;
+    Label22: TLabel;
+    Label24: TLabel;
     multiinstance: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox34: TCheckBox;
@@ -39,7 +43,7 @@ type
     Label20: TLabel;
     Label21: TLabel;
     Memo1: TMemo;
-    PageControl1: TPageControl;
+    Allegro: TPageControl;
     PageControl3: TPageControl;
     Process3: TProcess;
     SpeedButton3: TSpeedButton;
@@ -132,6 +136,11 @@ type
     procedure bcminuteChange(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure agviddriverChange(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
+    procedure Label22Click(Sender: TObject);
+    procedure AllegroChange(Sender: TObject);
     procedure RVClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -177,6 +186,8 @@ type
     procedure bcopyChange(Sender: TObject);
     procedure zqsshotChange(Sender: TObject);
     procedure zqwinmodeChange(Sender: TObject);
+    procedure zcvideodriver(Sender: TObject);
+    procedure zcvideodriverfs(Sender: TObject);
 
   private
     { Private declarations }
@@ -778,6 +789,63 @@ begin
       bcminute.Text := '2 hours';
     end;
 
+    //Video Drivers (Windowed, Windows)
+    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
+    begin
+      agviddriverw.Text := 'DirectDraw';
+    end;
+   if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXSO' then
+    begin
+      agviddriverw.Text := 'DirectDraw No Accel';
+    end;
+    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXSA'  then
+    begin
+      agviddriverw.Text := 'DirectDraw Safe';
+    end;
+    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXWN' then
+    begin
+      agviddriverw.Text := 'DirectDraw Windowed';
+    end;
+    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXOV'  then
+    begin
+      agviddriverw.Text := 'DirectDraw Overlay';
+    end;
+    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'GDIB' then
+    begin
+      agviddriverw.Text := 'GDI (Slow)';
+    end;
+    //if agcfg.readstring('graphics', 'gfx_cardw', '') = '' then
+    //begin
+    //  agcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
+    //  agviddriverw1.Text := 'DirectDraw';
+    //end;
+
+    //Video Drivers (Fullscreen, Windows)
+    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXAC' then
+    begin
+      agviddriver.Text := 'DirectDraw';
+    end;
+   if agcfg.readstring('graphics', 'gfx_card', '') = 'DXSO' then
+    begin
+      agviddriver.Text := 'DirectDraw No Accel';
+    end;
+    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXSA'  then
+    begin
+      agviddriver.Text := 'DirectDraw Safe';
+    end;
+    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXWN' then
+    begin
+      agviddriver.Text := 'DirectDraw Windowed';
+    end;
+    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXOV'  then
+    begin
+      agviddriver.Text := 'DirectDraw Overlay';
+    end;
+    if agcfg.readstring('graphics', 'gfx_card', '') = 'GDIB' then
+    begin
+      agviddriver.Text := 'GDI (Slow)';
+    end;
+
     //Color Scheme
     if agcfg.readString('zeldadx', 'gui_colorset', '') = '0' then
     begin
@@ -821,6 +889,9 @@ begin
     begin
       agcfg.WriteString('zquest', 'zq_win_proc_fix', '0');
     end;
+
+
+
 {$ENDIF}
   end;
 
@@ -1048,6 +1119,79 @@ begin
   process2.Execute;
 
 {$ENDIF}
+
+end;
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+begin
+  if agviddriverw.Text = 'DirectDraw' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
+  end;
+
+  if agviddriverw.Text = 'DirectDraw No Accel' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXSO');
+  end;
+  if agviddriverw.Text = 'DirectDraw Safe' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXSA');
+  end;
+  if agviddriverw.Text = 'DirectDraw Windowed' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXWN');
+  end;
+  if agviddriverw.Text = 'DirectDraw Overlay' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXOV');
+  end;
+  if agviddriverw.Text = 'GDI (Slow)' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
+  end;
+end;
+
+procedure TForm1.agviddriverChange(Sender: TObject);
+begin
+  if agviddriverw.Text = 'DirectDraw' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXAC');
+  end;
+
+  if agviddriverw.Text = 'DirectDraw No Accel' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXSO');
+  end;
+  if agviddriverw.Text = 'DirectDraw Safe' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXSA');
+  end;
+  if agviddriverw.Text = 'DirectDraw Windowed' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXWN');
+  end;
+  if agviddriverw.Text = 'DirectDraw Overlay' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXOV');
+  end;
+  if agviddriverw.Text = 'GDI (Slow)' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'GDIB');
+  end;
+end;
+
+procedure TForm1.Label1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Label22Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.AllegroChange(Sender: TObject);
+begin
 
 end;
 
@@ -1378,6 +1522,66 @@ begin
   begin
     ZCFullWindow := '-windowed ';
     agcfg.writestring('ZCL', 'zcfullscreen', '0');
+  end;
+end;
+
+//Windowed, Windows
+procedure TForm1.zcvideodriver(Sender: TObject);
+begin
+  if agviddriverw.Text = 'DirectDraw' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
+  end;
+
+  if agviddriverw.Text = 'DirectDraw No Accel' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXSO');
+  end;
+  if agviddriverw.Text = 'DirectDraw Safe' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXSA');
+  end;
+  if agviddriverw.Text = 'DirectDraw Windowed' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXWN');
+  end;
+  if agviddriverw.Text = 'DirectDraw Overlay' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'DXOV');
+  end;
+  if agviddriverw.Text = 'GDI (Slow)' then
+  begin
+    agcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
+  end;
+end;
+
+//Fullscreen, Windows
+procedure TForm1.zcvideodriverfs(Sender: TObject);
+begin
+  if agviddriver.Text = 'DirectDraw' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXAC');
+  end;
+
+  if agviddriver.Text = 'DirectDraw No Accel' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXSO');
+  end;
+  if agviddriver.Text = 'DirectDraw Safe' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXSA');
+  end;
+  if agviddriver.Text = 'DirectDraw Windowed' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXWN');
+  end;
+  if agviddriver.Text = 'DirectDraw Overlay' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'DXOV');
+  end;
+  if agviddriver.Text = 'GDI (Slow)' then
+  begin
+    agcfg.writestring('graphics', 'gfx_card', 'GDIB');
   end;
 end;
 
