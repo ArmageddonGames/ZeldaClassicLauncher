@@ -25,6 +25,10 @@ type
     agviddriver: TComboBox;
     Label22: TLabel;
     Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
     multiinstance: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox34: TCheckBox;
@@ -790,6 +794,7 @@ begin
     end;
 
     //Video Drivers (Windowed, Windows)
+    {$IFDEF WIN32}
     if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
     begin
       agviddriverw.Text := 'DirectDraw';
@@ -845,7 +850,7 @@ begin
     begin
       agviddriver.Text := 'GDI (Slow)';
     end;
-
+    {$ENDIF}
     //Color Scheme
     if agcfg.readString('zeldadx', 'gui_colorset', '') = '0' then
     begin
@@ -1124,6 +1129,7 @@ end;
 
 procedure TForm1.ComboBox1Change(Sender: TObject);
 begin
+  {$IFDEF WIN32}
   if agviddriverw.Text = 'DirectDraw' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
@@ -1149,10 +1155,12 @@ begin
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
   end;
+  {$ENDIF}
 end;
 
 procedure TForm1.agviddriverChange(Sender: TObject);
 begin
+  {$IFDEF WIN32}
   if agviddriverw.Text = 'DirectDraw' then
   begin
     agcfg.writestring('graphics', 'gfx_card', 'DXAC');
@@ -1178,6 +1186,7 @@ begin
   begin
     agcfg.writestring('graphics', 'gfx_card', 'GDIB');
   end;
+  {$ENDIF}
 end;
 
 procedure TForm1.Label1Click(Sender: TObject);
@@ -1528,6 +1537,7 @@ end;
 //Windowed, Windows
 procedure TForm1.zcvideodriver(Sender: TObject);
 begin
+  {$IFDEF WIN32}
   if agviddriverw.Text = 'DirectDraw' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
@@ -1553,11 +1563,13 @@ begin
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
   end;
+  {$ENDIF}
 end;
 
 //Fullscreen, Windows
 procedure TForm1.zcvideodriverfs(Sender: TObject);
 begin
+  {$IFDEF WIN32}
   if agviddriver.Text = 'DirectDraw' then
   begin
     agcfg.writestring('graphics', 'gfx_card', 'DXAC');
@@ -1583,6 +1595,7 @@ begin
   begin
     agcfg.writestring('graphics', 'gfx_card', 'GDIB');
   end;
+  {$ENDIF}
 end;
 
 procedure TForm1.questmeClick(Sender: TObject);

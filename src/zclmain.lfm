@@ -10,7 +10,7 @@ object Form1: TForm1
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Zelda Classic Launcher 2.6.0'
+  Caption = 'Zelda Classic Launcher 2.6.1'
   ClientHeight = 430
   ClientWidth = 586
   Color = clForm
@@ -30913,9 +30913,9 @@ object Form1: TForm1
       ClientHeight = 296
       ClientWidth = 578
       object Label22: TLabel
-        Left = 4
+        Left = 5
         Height = 16
-        Top = 1
+        Top = 32
         Width = 190
         Caption = 'Graphics Driver (Windowed) : '
         Font.Height = -13
@@ -30926,9 +30926,9 @@ object Form1: TForm1
         OnClick = Label22Click
       end
       object Label24: TLabel
-        Left = 4
+        Left = 5
         Height = 16
-        Top = 29
+        Top = 60
         Width = 191
         Caption = 'Graphics Driver (Full Screen): '
         Font.Height = -13
@@ -30939,9 +30939,9 @@ object Form1: TForm1
         OnClick = Label22Click
       end
       object agviddriverw: TComboBox
-        Left = 203
+        Left = 204
         Height = 21
-        Top = 1
+        Top = 32
         Width = 100
         ItemHeight = 13
         Items.Strings = (
@@ -30957,9 +30957,9 @@ object Form1: TForm1
         Text = 'agviddriverw'
       end
       object agviddriver: TComboBox
-        Left = 203
+        Left = 204
         Height = 21
-        Top = 29
+        Top = 60
         Width = 100
         ItemHeight = 13
         Items.Strings = (
@@ -30973,6 +30973,58 @@ object Form1: TForm1
         OnChange = zcvideodriverfs
         TabOrder = 1
         Text = 'agviddriver'
+      end
+      object Label25: TLabel
+        Left = 5
+        Height = 16
+        Top = 8
+        Width = 179
+        Caption = 'Windows OS Allegro Drivers'
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        OnClick = Label22Click
+      end
+      object Label26: TLabel
+        Left = 4
+        Height = 16
+        Top = 128
+        Width = 137
+        Caption = 'LINUX Allegro Drivers'
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        OnClick = Label22Click
+      end
+      object Label27: TLabel
+        Left = 5
+        Height = 16
+        Top = 152
+        Width = 190
+        Caption = 'Graphics Driver (Windowed) : '
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        OnClick = Label22Click
+      end
+      object Label28: TLabel
+        Left = 5
+        Height = 16
+        Top = 180
+        Width = 191
+        Caption = 'Graphics Driver (Full Screen): '
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+        OnClick = Label22Click
       end
     end
   end
