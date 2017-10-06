@@ -12,7 +12,7 @@ interface
 uses
   SysUtils, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, LResources, ComCtrls, Buttons, Menus, Process,
-  inifiles, RTTICtrls, Classes;
+  inifiles, RTTICtrls, Classes, Types;
 
 type
 
@@ -156,6 +156,8 @@ type
     procedure palcycChange(Sender: TObject);
     procedure owriteprotectChange(Sender: TObject);
     procedure scopyChange(Sender: TObject);
+    procedure TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
     procedure tprotectChange(Sender: TObject);
     procedure ttipsChange(Sender: TObject);
     procedure combobrushChange(Sender: TObject);
@@ -264,6 +266,13 @@ begin
     zquestcfg := Tinifile.Create('zquest.cfg');
     ZCResX := zccfg.readstring('zeldadx', 'resx', '640');
     ZCResY := zccfg.readstring('zeldadx', 'resy', '480');
+    //Hardcoded Romview settings
+    agcfg.writestring('romview-graphics', 'resx', '640');
+    agcfg.writestring('romview-graphics', 'resy', '480');
+    agcfg.writestring('romview-graphics', 'fullscreen', '0');
+    agcfg.writestring('romview-graphics', 'native', '1');
+    agcfg.writestring('romview-graphics', 'fps', '60');
+
 
     //ZC Name Entry Mode
     if zccfg.readstring('zeldadx', 'name_entry_mode', '') = '0' then
@@ -1371,6 +1380,12 @@ begin
   begin
     zquestcfg.writestring('zquest', 'auto_save_retention', '10');
   end;
+end;
+
+procedure TForm1.TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+
 end;
 
 procedure TForm1.tprotectChange(Sender: TObject);

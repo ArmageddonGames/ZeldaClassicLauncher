@@ -1,5 +1,12 @@
 ZCL Changelog Version 2.6.x
 
+2.6.3
+
+Chore: Fixed version ID. ( ZoriaRPG, 6th October, 2017 )
+
+Fix: Added hardcoded config settings for RomView.
+Changelog: Added hardcoded agcfg.writestring() values for ['romview-graphics']. ( ZoriaRPG, 6th October, 2017 )
+
 2.6.2
 
 Changed calls to romview-w.exe and romview-l to romview.exe and romview, for Windows and Linux, respectively.
