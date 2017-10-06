@@ -809,27 +809,27 @@ begin
 
     //Video Drivers (Windowed, Windows)
     {$IFDEF WIN32}
-    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
     begin
       agviddriverw.Text := 'DirectDraw';
     end;
-   if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXSO' then
+   if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXSO' then
     begin
       agviddriverw.Text := 'DirectDraw No Accel';
     end;
-    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXSA'  then
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXSA'  then
     begin
       agviddriverw.Text := 'DirectDraw Safe';
     end;
-    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXWN' then
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXWN' then
     begin
       agviddriverw.Text := 'DirectDraw Windowed';
     end;
-    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'DXOV'  then
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXOV'  then
     begin
       agviddriverw.Text := 'DirectDraw Overlay';
     end;
-    if agcfg.readstring('graphics', 'gfx_cardw', '') = 'GDIB' then
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'GDIB' then
     begin
       agviddriverw.Text := 'GDI (Slow)';
     end;
@@ -840,27 +840,27 @@ begin
     //end;
 
     //Video Drivers (Fullscreen, Windows)
-    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXAC' then
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'DXAC' then
     begin
       agviddriver.Text := 'DirectDraw';
     end;
-   if agcfg.readstring('graphics', 'gfx_card', '') = 'DXSO' then
+   if zccfg.readstring('graphics', 'gfx_card', '') = 'DXSO' then
     begin
       agviddriver.Text := 'DirectDraw No Accel';
     end;
-    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXSA'  then
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'DXSA'  then
     begin
       agviddriver.Text := 'DirectDraw Safe';
     end;
-    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXWN' then
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'DXWN' then
     begin
       agviddriver.Text := 'DirectDraw Windowed';
     end;
-    if agcfg.readstring('graphics', 'gfx_card', '') = 'DXOV'  then
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'DXOV'  then
     begin
       agviddriver.Text := 'DirectDraw Overlay';
     end;
-    if agcfg.readstring('graphics', 'gfx_card', '') = 'GDIB' then
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'GDIB' then
     begin
       agviddriver.Text := 'GDI (Slow)';
     end;
@@ -892,9 +892,9 @@ begin
       currentscheme.Picture := image6.Picture;
     end;
 {$IFDEF WIN32}
-    if agcfg.ReadString('graphics', 'disable_direct_updating', 'unset') = 'unset' then
+    if zccfg.ReadString('graphics', 'disable_direct_updating', 'unset') = 'unset' then
     begin
-      agcfg.WriteString('graphics', 'disable_direct_updating', '1');
+      zccfg.WriteString('graphics', 'disable_direct_updating', '1');
     end;
     if zccfg.ReadString('zeldadx', 'use_dwm_flush', 'unset') = 'unset' then
     begin
@@ -1146,28 +1146,28 @@ begin
   {$IFDEF WIN32}
   if agviddriverw.Text = 'DirectDraw' then
   begin
-    agcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXAC');
   end;
 
   if agviddriverw.Text = 'DirectDraw No Accel' then
   begin
-    agcfg.writestring('graphics', 'gfx_cardw', 'DXSO');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXSO');
   end;
   if agviddriverw.Text = 'DirectDraw Safe' then
   begin
-    agcfg.writestring('graphics', 'gfx_cardw', 'DXSA');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXSA');
   end;
   if agviddriverw.Text = 'DirectDraw Windowed' then
   begin
-    agcfg.writestring('graphics', 'gfx_cardw', 'DXWN');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXWN');
   end;
   if agviddriverw.Text = 'DirectDraw Overlay' then
   begin
-    agcfg.writestring('graphics', 'gfx_cardw', 'DXOV');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXOV');
   end;
   if agviddriverw.Text = 'GDI (Slow)' then
   begin
-    agcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
+    zccfg.writestring('graphics', 'gfx_cardw', 'GDIB');
   end;
   {$ENDIF}
 end;
@@ -1177,28 +1177,28 @@ begin
   {$IFDEF WIN32}
   if agviddriverw.Text = 'DirectDraw' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXAC');
+    zccfg.writestring('graphics', 'gfx_card', 'DXAC');
   end;
 
   if agviddriverw.Text = 'DirectDraw No Accel' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXSO');
+    zccfg.writestring('graphics', 'gfx_card', 'DXSO');
   end;
   if agviddriverw.Text = 'DirectDraw Safe' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXSA');
+    zccfg.writestring('graphics', 'gfx_card', 'DXSA');
   end;
   if agviddriverw.Text = 'DirectDraw Windowed' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXWN');
+    zccfg.writestring('graphics', 'gfx_card', 'DXWN');
   end;
   if agviddriverw.Text = 'DirectDraw Overlay' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXOV');
+    zccfg.writestring('graphics', 'gfx_card', 'DXOV');
   end;
   if agviddriverw.Text = 'GDI (Slow)' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'GDIB');
+    zccfg.writestring('graphics', 'gfx_card', 'GDIB');
   end;
   {$ENDIF}
 end;
@@ -1221,13 +1221,13 @@ end;
 procedure TForm1.RVClick(Sender: TObject);
 begin
 {$IFDEF LINUX}
-  process3.CommandLine := './romview-l' + zqsound;
+  process3.CommandLine := './romview' + zqsound;
   process3.Execute;
 
 {$ENDIF}
 
 {$IFDEF WIN32}
-  process3.CommandLine := './romview-w.exe' + zqsound;
+  process3.CommandLine := './romview.exe' + zqsound;
   process3.Execute;
 
 {$ENDIF}
@@ -1555,27 +1555,39 @@ begin
   if agviddriverw.Text = 'DirectDraw' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXAC');
+    zquestcfg.writestring('graphics', 'gfx_cardw', 'DXAC');
   end;
 
   if agviddriverw.Text = 'DirectDraw No Accel' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'DXSO');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXSO');
+    zquestcfg.writestring('graphics', 'gfx_cardw', 'DXSO');
   end;
   if agviddriverw.Text = 'DirectDraw Safe' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'DXSA');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXSA');
+    zquestcfg.writestring('graphics', 'gfx_cardw', 'DXSA');
   end;
   if agviddriverw.Text = 'DirectDraw Windowed' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'DXWN');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXWN');
+    zquestcfg.writestring('graphics', 'gfx_cardw', 'DXWN');
   end;
   if agviddriverw.Text = 'DirectDraw Overlay' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'DXOV');
+    zccfg.writestring('graphics', 'gfx_cardw', 'DXOV');
+    zquestcfg.writestring('graphics', 'gfx_cardw', 'DXOV');
   end;
   if agviddriverw.Text = 'GDI (Slow)' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
+    zccfg.writestring('graphics', 'gfx_cardw', 'GBID');
+    zquestcfg.writestring('graphics', 'gfx_cardw', 'GBID');
   end;
   {$ENDIF}
 end;
@@ -1586,28 +1598,40 @@ begin
   {$IFDEF WIN32}
   if agviddriver.Text = 'DirectDraw' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXAC');
+    zccfg.writestring('graphics', 'gfx_card', 'DXAC');
+    zccfg.writestring('graphics', 'gfx_card', 'DXAC');
+    zquestcfg.writestring('graphics', 'gfx_card', 'DXAC');
   end;
 
   if agviddriver.Text = 'DirectDraw No Accel' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXSO');
+    zccfg.writestring('graphics', 'gfx_card', 'DXSO');
+    zccfg.writestring('graphics', 'gfx_card', 'DXSO');
+    zquestcfg.writestring('graphics', 'gfx_card', 'DXSO');
   end;
   if agviddriver.Text = 'DirectDraw Safe' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXSA');
+    zccfg.writestring('graphics', 'gfx_card', 'DXSA');
+    zccfg.writestring('graphics', 'gfx_card', 'DXSA');
+    zquestcfg.writestring('graphics', 'gfx_card', 'DXSA');
   end;
   if agviddriver.Text = 'DirectDraw Windowed' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXWN');
+    zccfg.writestring('graphics', 'gfx_card', 'DXWN');
+    zccfg.writestring('graphics', 'gfx_card', 'DXWN');
+    zquestcfg.writestring('graphics', 'gfx_card', 'DXWN');
   end;
   if agviddriver.Text = 'DirectDraw Overlay' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'DXOV');
+    zccfg.writestring('graphics', 'gfx_card', 'DXOV');
+    zccfg.writestring('graphics', 'gfx_card', 'DXOV');
+    zquestcfg.writestring('graphics', 'gfx_card', 'DXOV');
   end;
   if agviddriver.Text = 'GDI (Slow)' then
   begin
-    agcfg.writestring('graphics', 'gfx_card', 'GDIB');
+    zccfg.writestring('graphics', 'gfx_card', 'GDIB');
+    zccfg.writestring('graphics', 'gfx_card', 'GDIB');
+    zquestcfg.writestring('graphics', 'gfx_card', 'GDIB');
   end;
   {$ENDIF}
 end;

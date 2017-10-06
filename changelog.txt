@@ -2,6 +2,9 @@ ZCL Changelog Version 2.6.x
 
 2.6.2
 
+Changed calls to romview-w.exe and romview-l to romview.exe and romview, for Windows and Linux, respectively.
+Added write instructions for the [graphics] section (for video drivers) to write to all three config files. 
+
 Segregated all calls to ag.cfg:
 	All calls to ag.cfg have been segregated as follows:
 	Calls specific to ZC read and write to zc.cfg.
