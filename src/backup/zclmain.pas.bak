@@ -202,6 +202,8 @@ type
 var
   Form1: TForm1;
   agcfg: Tinifile;
+  zccfg: Tinifile;
+  zquestcfg: Tinifile;
 
   //Open and Save
   fname: string;
@@ -245,49 +247,61 @@ begin
     memo1.Lines.SaveToFile('ag.cfg'); //Creating the new config with defaults.
   end;
 
+  if not fileexists('zc.cfg') then
+  begin
+    memo1.Lines.SaveToFile('zc.cfg'); //Creating the new config with defaults.
+  end;
+
+  if not fileexists('zquest.cfg') then
+  begin
+    memo1.Lines.SaveToFile('zquest.cfg'); //Creating the new config with defaults.
+  end;
+
   if fileexists('ag.cfg') then
   begin
     agcfg := Tinifile.Create('ag.cfg');
-    ZCResX := agcfg.readstring('zeldadx', 'resx', '640');
-    ZCResY := agcfg.readstring('zeldadx', 'resy', '480');
+    zccfg := Tinifile.Create('zc.cfg');
+    zquestcfg := Tinifile.Create('zquest.cfg');
+    ZCResX := zccfg.readstring('zeldadx', 'resx', '640');
+    ZCResY := zccfg.readstring('zeldadx', 'resy', '480');
 
     //ZC Name Entry Mode
-    if agcfg.readstring('zeldadx', 'name_entry_mode', '') = '0' then
+    if zccfg.readstring('zeldadx', 'name_entry_mode', '') = '0' then
     begin
       zcentrymode.Text := 'Keyboard';
     end;
 
-    if agcfg.readstring('zeldadx', 'name_entry_mode', '') = '1' then
+    if zccfg.readstring('zeldadx', 'name_entry_mode', '') = '1' then
     begin
       zcentrymode.Text := 'Letter Grid';
     end;
 
-    if agcfg.readstring('zeldadx', 'name_entry_mode', '') = '2' then
+    if zccfg.readstring('zeldadx', 'name_entry_mode', '') = '2' then
     begin
       zcentrymode.Text := 'Extended Letter Grid';
     end;
 
     //ZC Title Screen
-    if agcfg.readstring('zeldadx', 'title', '') = '0' then
+    if zccfg.readstring('zeldadx', 'title', '') = '0' then
     begin
       zctitle.Text := 'Classic';
       tscreen.picture := zclassic.picture;
     end;
 
-    if agcfg.readstring('zeldadx', 'title', '') = '1' then
+    if zccfg.readstring('zeldadx', 'title', '') = '1' then
     begin
       zctitle.Text := 'Modern';
       tscreen.picture := zelda20.picture;
     end;
 
-    if agcfg.readstring('zeldadx', 'title', '') = '2' then
+    if zccfg.readstring('zeldadx', 'title', '') = '2' then
     begin
       zctitle.Text := 'New (2.5)';
       tscreen.picture := zeldanew.picture;
     end;
 
     //ZC Full Screen
-    if agcfg.readstring('ZCL', 'zcfullscreen', '') = '1' then
+    if zccfg.readstring('ZCL', 'zcfullscreen', '') = '1' then
     begin
       scrmodezc.Text := 'Full Screen';
       ZCFullWindow := '-fullscreen ';
@@ -326,7 +340,7 @@ begin
     end;
 
     //ZC Fps
-    if agcfg.Readstring('zeldadx', 'throttlefps', '') = '1' then
+    if zccfg.Readstring('zeldadx', 'throttlefps', '') = '1' then
     begin
       zclimfps.Text := 'Yes';
     end
@@ -336,7 +350,7 @@ begin
     end;
 
     //ZC No sound
-    if agcfg.readstring('ZCL', 'zcnosound', '') = '1' then
+    if zccfg.readstring('ZCL', 'zcnosound', '') = '1' then
     begin
       zcsound.Text := 'Yes';
       Sound1 := '-s ';
@@ -348,7 +362,7 @@ begin
     end;
 
     //ZC Skip Agn Logo
-    if agcfg.readstring('ZCL', 'zcfast', '') = '1' then
+    if zccfg.readstring('ZCL', 'zcfast', '') = '1' then
     begin
       zcskiplogo.Text := 'Yes';
       Logo1 := '-fast ';
@@ -360,7 +374,7 @@ begin
     end;
 
     //ZC Quick Load
-    if agcfg.readstring('ZCL', 'quickload', '') = '1' then
+    if zccfg.readstring('ZCL', 'quickload', '') = '1' then
     begin
       zcqicons.Text := 'No';
       Quickload := '-quickload ';
@@ -374,7 +388,7 @@ begin
     end;
 
     //ZC Multiple instances
-    if agcfg.readstring('ZCL', 'multiple_instances', '') = '1' then
+    if zccfg.readstring('ZCL', 'multiple_instances', '') = '1' then
     begin
       MultiZC := '-multiple ';
       multiinstance.Checked := True;
@@ -385,7 +399,7 @@ begin
     end;
 
     //ZQ Fullscreen / Window Mode
-    if agcfg.readstring('zquest', 'fullscreen', '') = '1' then
+    if zquestcfg.readstring('zquest', 'fullscreen', '') = '1' then
     begin
       zqwinmode.Text := 'Full Screen';
     end
@@ -395,40 +409,40 @@ begin
       scaletext.Visible := True;
       scalemode.Visible := True;
 
-      if agcfg.ReadString('zquest', 'small', '') = '1' then
+      if zquestcfg.ReadString('zquest', 'small', '') = '1' then
       begin
-        if agcfg.ReadString('zquest', 'scale', '') = '1' then
+        if zquestcfg.ReadString('zquest', 'scale', '') = '1' then
         begin
           scalemode.Text := '1x';
         end;
-        if agcfg.ReadString('zquest', 'scale', '') = '2' then
+        if zquestcfg.ReadString('zquest', 'scale', '') = '2' then
         begin
           scalemode.Text := '2x';
         end;
-        if agcfg.ReadString('zquest', 'scale', '') = '3' then
+        if zquestcfg.ReadString('zquest', 'scale', '') = '3' then
         begin
           scalemode.Text := '3x';
         end;
-        if agcfg.ReadString('zquest', 'scale', '') = '4' then
+        if zquestcfg.ReadString('zquest', 'scale', '') = '4' then
         begin
           scalemode.Text := '4x';
         end;
       end
       else
       begin
-        if agcfg.ReadString('zquest', 'scale_large', '') = '1' then
+        if zquestcfg.ReadString('zquest', 'scale_large', '') = '1' then
         begin
           scalemode.Text := '1x';
         end;
-        if agcfg.ReadString('zquest', 'scale_large', '') = '2' then
+        if zquestcfg.ReadString('zquest', 'scale_large', '') = '2' then
         begin
           scalemode.Text := '2x';
         end;
-        if agcfg.ReadString('zquest', 'scale_large', '') = '3' then
+        if zquestcfg.ReadString('zquest', 'scale_large', '') = '3' then
         begin
           scalemode.Text := '3x';
         end;
-        if agcfg.ReadString('zquest', 'scale_large', '') = '4' then
+        if zquestcfg.ReadString('zquest', 'scale_large', '') = '4' then
         begin
           scalemode.Text := '4x';
         end;
@@ -436,7 +450,7 @@ begin
     end;
 
     //ZQ Large Mode
-    if agcfg.ReadString('zquest', 'small', '') = '0' then
+    if zquestcfg.ReadString('zquest', 'small', '') = '0' then
     begin
       zinterface.Text := 'New (2.5)';
     end
@@ -447,7 +461,7 @@ begin
 
 
     //ZQ No Sound
-    if agcfg.ReadString('ZCL', 'zqnosound', '') = '1' then
+    if zquestcfg.ReadString('ZCL', 'zqnosound', '') = '1' then
     begin
       zqsoundmode.Text := 'Yes';
       ZQSound := '-s ';
@@ -459,7 +473,7 @@ begin
     end;
 
     //ZC Show FPS :D
-    if agcfg.ReadString('zeldadx', 'showfps', '') = '1' then
+    if zccfg.ReadString('zeldadx', 'showfps', '') = '1' then
     begin
       zcshowfps.Text := 'Yes';
     end
@@ -469,7 +483,7 @@ begin
     end;
 
     //ZC Heart Beep
-    if agcfg.ReadString('zeldadx', 'heart_beep', '') = '1' then
+    if zccfg.ReadString('zeldadx', 'heart_beep', '') = '1' then
     begin
       zcbeep.Text := 'Yes';
     end
@@ -479,7 +493,7 @@ begin
     end;
 
     //ZQ Limit FPS
-    if agcfg.ReadString('zquest', 'vsync', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'vsync', '') = '1' then
     begin
       zqfpslimit.Text := 'Yes';
     end
@@ -489,7 +503,7 @@ begin
     end;
 
     //ZQ Show FPS
-    if agcfg.ReadString('zquest', 'showfps', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'showfps', '') = '1' then
     begin
       zqshowfps.Text := 'Yes';
     end
@@ -499,296 +513,296 @@ begin
     end;
 
     //ZQ Show Animations
-    if agcfg.ReadString('zquest', 'animation_on', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'animation_on', '') = '1' then
     begin
       checkbox35.Checked := True;
     end;
 
     //ZQ Open Last Quest
-    if agcfg.ReadString('zquest', 'open_last_quest', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'open_last_quest', '') = '1' then
     begin
       checkbox34.Checked := True;
     end;
 
     //ZQ Mouse Scroll
-    if agcfg.ReadString('zquest', 'mouse_scroll', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'mouse_scroll', '') = '1' then
     begin
       checkbox36.Checked := True;
     end;
 
     //ZQSave Paths
-    if agcfg.ReadString('zquest', 'save_paths', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'save_paths', '') = '1' then
     begin
       checkbox37.Checked := True;
     end;
 
     //ZQ Combo Brush
-    if agcfg.ReadString('zquest', 'combo_brush', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'combo_brush', '') = '1' then
     begin
       combobrush.Checked := True;
     end;
 
     //ZQ Tooltips
-    if agcfg.ReadString('zquest', 'enable_tooltips', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'enable_tooltips', '') = '1' then
     begin
       ttips.Checked := True;
     end;
 
     //ZQ Float Brush
-    if agcfg.ReadString('zquest', 'float_brush', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'float_brush', '') = '1' then
     begin
       floatbrush.Checked := True;
     end;
 
     //ZQ Overwrite Protection
-    if agcfg.ReadString('zquest', 'overwrite_prevention', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'overwrite_prevention', '') = '1' then
     begin
       owriteprotect.Checked := True;
     end;
 
     //ZQ Cycle
-    if agcfg.ReadString('zquest', 'cycle_on', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'cycle_on', '') = '1' then
     begin
       palcyc.Checked := True;
     end;
 
     //ZQ Ruleset
-    if agcfg.ReadString('zquest', 'rulesetdialog', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'rulesetdialog', '') = '1' then
     begin
       ruleset.Checked := True;
     end;
 
     //ZQ Tile Protection
-    if agcfg.ReadString('zquest', 'tile_protection', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'tile_protection', '') = '1' then
     begin
       tprotect.Checked := True;
     end;
 
     //ZQ Uncompressed Auto Saves
-    if agcfg.ReadString('zquest', 'uncompressed_auto_saves', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'uncompressed_auto_saves', '') = '1' then
     begin
       uncomp.Checked := True;
     end;
 
     //ZQ Static for Invalid Data
-    if agcfg.ReadString('zquest', 'invalid_static', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'invalid_static', '') = '1' then
     begin
       usestatic.Checked := True;
     end;
 
     //ZQShow Misaligns
-    if agcfg.ReadString('zquest', 'show_misalignments', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'show_misalignments', '') = '1' then
     begin
       checkbox38.Checked := True;
     end;
 
     //ZQ Screenshots
-    if agcfg.ReadString('zquest', 'snapshot_format', '') = '0' then
+    if zquestcfg.ReadString('zquest', 'snapshot_format', '') = '0' then
     begin
       zqsshot.Text := 'BMP';
     end;
-    if agcfg.ReadString('zquest', 'snapshot_format', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'snapshot_format', '') = '1' then
     begin
       zqsshot.Text := 'GIF';
     end;
-    if agcfg.ReadString('zquest', 'snapshot_format', '') = '2' then
+    if zquestcfg.ReadString('zquest', 'snapshot_format', '') = '2' then
     begin
       zqsshot.Text := 'Jpeg';
     end;
-    if agcfg.ReadString('zquest', 'snapshot_format', '') = '3' then
+    if zquestcfg.ReadString('zquest', 'snapshot_format', '') = '3' then
     begin
       zqsshot.Text := 'PNG';
     end;
-    if agcfg.ReadString('zquest', 'snapshot_format', '') = '4' then
+    if zquestcfg.ReadString('zquest', 'snapshot_format', '') = '4' then
     begin
       zqsshot.Text := 'PCX';
     end;
-    if agcfg.ReadString('zquest', 'snapshot_format', '') = '5' then
+    if zquestcfg.ReadString('zquest', 'snapshot_format', '') = '5' then
     begin
       zqsshot.Text := 'TGA';
     end;
 
 
     //Zelda Snapshot
-    if agcfg.ReadString('zeldadx', 'snapshot_format', '') = '0' then
+    if zccfg.ReadString('zeldadx', 'snapshot_format', '') = '0' then
     begin
       zcsshot.Text := 'BMP';
     end;
-    if agcfg.ReadString('zeldadx', 'snapshot_format', '') = '1' then
+    if zccfg.ReadString('zeldadx', 'snapshot_format', '') = '1' then
     begin
       zcsshot.Text := 'GIF';
     end;
-    if agcfg.ReadString('zeldadx', 'snapshot_format', '') = '2' then
+    if zccfg.ReadString('zeldadx', 'snapshot_format', '') = '2' then
     begin
       zcsshot.Text := 'Jpeg';
     end;
-    if agcfg.ReadString('zeldadx', 'snapshot_format', '') = '3' then
+    if zccfg.ReadString('zeldadx', 'snapshot_format', '') = '3' then
     begin
       zcsshot.Text := 'PNG';
     end;
-    if agcfg.ReadString('zeldadx', 'snapshot_format', '') = '4' then
+    if zccfg.ReadString('zeldadx', 'snapshot_format', '') = '4' then
     begin
       zcsshot.Text := 'PCX';
     end;
-    if agcfg.ReadString('zeldadx', 'snapshot_format', '') = '5' then
+    if zccfg.ReadString('zeldadx', 'snapshot_format', '') = '5' then
     begin
       zcsshot.Text := 'TGA';
     end;
 
     //ZQ Auto Backup Copies
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '0' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '0' then
     begin
       bcopy.Text := '0';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '1' then
     begin
       bcopy.Text := '1';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '2' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '2' then
     begin
       bcopy.Text := '2';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '3' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '3' then
     begin
       bcopy.Text := '3';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '4' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '4' then
     begin
       bcopy.Text := '4';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '5' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '5' then
     begin
       bcopy.Text := '5';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '6' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '6' then
     begin
       bcopy.Text := '6';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '7' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '7' then
     begin
       bcopy.Text := '7';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '8' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '8' then
     begin
       bcopy.Text := '8';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '9' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '9' then
     begin
       bcopy.Text := '9';
     end;
-    if agcfg.ReadString('zquest', 'auto_backup_retention', '') = '10' then
+    if zquestcfg.ReadString('zquest', 'auto_backup_retention', '') = '10' then
     begin
       bcopy.Text := '10';
     end;
 
     //ZQ Auto Save Interval
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '1' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '1' then
     begin
       scopy.Text := '1';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '2' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '2' then
     begin
       scopy.Text := '2';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '3' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '3' then
     begin
       scopy.Text := '3';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '4' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '4' then
     begin
       scopy.Text := '4';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '5' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '5' then
     begin
       scopy.Text := '5';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '6' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '6' then
     begin
       scopy.Text := '6';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '7' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '7' then
     begin
       scopy.Text := '7';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '8' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '8' then
     begin
       scopy.Text := '8';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '9' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '9' then
     begin
       scopy.Text := '9';
     end;
-    if agcfg.readstring('zquest', 'auto_save_retention', '') = '10' then
+    if zquestcfg.readstring('zquest', 'auto_save_retention', '') = '10' then
     begin
       scopy.Text := '10';
     end;
 
     //ZQ Auto Save Copies
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '0' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '0' then
     begin
       bcminute.Text := 'Disabled';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '1' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '1' then
     begin
       bcminute.Text := '1 minute';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '2' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '2' then
     begin
       bcminute.Text := '2 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '3' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '3' then
     begin
       bcminute.Text := '3 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '4' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '4' then
     begin
       bcminute.Text := '4 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '5' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '5' then
     begin
       bcminute.Text := '5 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '6' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '6' then
     begin
       bcminute.Text := '6 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '7' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '7' then
     begin
       bcminute.Text := '7 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '8' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '8' then
     begin
       bcminute.Text := '8 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '9' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '9' then
     begin
       bcminute.Text := '9 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '10' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '10' then
     begin
       bcminute.Text := '10 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '15' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '15' then
     begin
       bcminute.Text := '15 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '30' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '30' then
     begin
       bcminute.Text := '30 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '45' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '45' then
     begin
       bcminute.Text := '45 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '60' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '60' then
     begin
       bcminute.Text := '1 hour';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '90' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '90' then
     begin
       bcminute.Text := '90 minutes';
     end;
-    if agcfg.readstring('zquest', 'auto_save_interval', '') = '120' then
+    if zquestcfg.readstring('zquest', 'auto_save_interval', '') = '120' then
     begin
       bcminute.Text := '2 hours';
     end;
@@ -852,27 +866,27 @@ begin
     end;
     {$ENDIF}
     //Color Scheme
-    if agcfg.readString('zeldadx', 'gui_colorset', '') = '0' then
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '0' then
     begin
       tehscheme.Text := 'Default';
       currentscheme.Picture := image2.Picture;
     end;
-    if agcfg.readString('zeldadx', 'gui_colorset', '') = '1' then
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '1' then
     begin
       tehscheme.Text := 'Windows 98';
       currentscheme.Picture := image3.Picture;
     end;
-    if agcfg.readString('zeldadx', 'gui_colorset', '') = '687' then
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '687' then
     begin
       tehscheme.Text := 'Gold';
       currentscheme.Picture := image4.Picture;
     end;
-    if agcfg.readString('zeldadx', 'gui_colorset', '') = '3' then
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '3' then
     begin
       tehscheme.Text := 'Blue';
       currentscheme.Picture := image5.Picture;
     end;
-    if agcfg.readString('zeldadx', 'gui_colorset', '') = '4104' then
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '4104' then
     begin
       tehscheme.Text := 'Pink';
       currentscheme.Picture := image6.Picture;
@@ -882,17 +896,17 @@ begin
     begin
       agcfg.WriteString('graphics', 'disable_direct_updating', '1');
     end;
-    if agcfg.ReadString('zeldadx', 'use_dwm_flush', 'unset') = 'unset' then
+    if zccfg.ReadString('zeldadx', 'use_dwm_flush', 'unset') = 'unset' then
     begin
-      agcfg.WriteString('zeldadx', 'use_dwm_flush', '0');
+      zccfg.WriteString('zeldadx', 'use_dwm_flush', '0');
     end;
-    if agcfg.ReadString('zeldadx', 'zc_win_proc_fix', 'unset') = 'unset' then
+    if zccfg.ReadString('zeldadx', 'zc_win_proc_fix', 'unset') = 'unset' then
     begin
-      agcfg.WriteString('zeldadx', 'zc_win_proc_fix', '0');
+      zccfg.WriteString('zeldadx', 'zc_win_proc_fix', '0');
     end;
-    if agcfg.ReadString('zquest', 'zq_win_proc_fix', 'unset') = 'unset' then
+    if zquestcfg.ReadString('zquest', 'zq_win_proc_fix', 'unset') = 'unset' then
     begin
-      agcfg.WriteString('zquest', 'zq_win_proc_fix', '0');
+      zquestcfg.WriteString('zquest', 'zq_win_proc_fix', '0');
     end;
 
 
@@ -945,11 +959,11 @@ procedure TForm1.CheckBox34Change(Sender: TObject);
 begin
   if checkbox34.Checked then
   begin
-    agcfg.WriteString('zquest', 'open_last_quest', '1');
+    zquestcfg.WriteString('zquest', 'open_last_quest', '1');
   end
   else
   begin
-    agcfg.WriteString('zquest', 'open_last_quest', '0');
+    zquestcfg.WriteString('zquest', 'open_last_quest', '0');
   end;
 end;
 
@@ -957,11 +971,11 @@ procedure TForm1.CheckBox35Change(Sender: TObject);
 begin
   if checkbox35.Checked then
   begin
-    agcfg.writestring('zquest', 'animation_on', '1');
+    zquestcfg.writestring('zquest', 'animation_on', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'animation_on', '0');
+    zquestcfg.writestring('zquest', 'animation_on', '0');
   end;
 end;
 
@@ -969,11 +983,11 @@ procedure TForm1.CheckBox36Change(Sender: TObject);
 begin
   if checkbox36.Checked then
   begin
-    agcfg.writestring('zquest', 'mouse_scroll', '1');
+    zquestcfg.writestring('zquest', 'mouse_scroll', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'mouse_scroll', '0');
+    zquestcfg.writestring('zquest', 'mouse_scroll', '0');
   end;
 end;
 
@@ -981,11 +995,11 @@ procedure TForm1.CheckBox37Change(Sender: TObject);
 begin
   if checkbox37.Checked then
   begin
-    agcfg.writestring('zquest', 'save_paths', '1');
+    zquestcfg.writestring('zquest', 'save_paths', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'save_paths', '0');
+    zquestcfg.writestring('zquest', 'save_paths', '0');
   end;
 
 end;
@@ -994,11 +1008,11 @@ procedure TForm1.CheckBox38Change(Sender: TObject);
 begin
   if checkbox37.Checked then
   begin
-    agcfg.writestring('zquest', 'show_misalignments', '1');
+    zquestcfg.writestring('zquest', 'show_misalignments', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'show_misalignments', '0');
+    zquestcfg.writestring('zquest', 'show_misalignments', '0');
   end;
 end;
 
@@ -1043,71 +1057,71 @@ procedure TForm1.bcminuteChange(Sender: TObject);
 begin
   if bcminute.Text = 'Disabled' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '0');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '0');
   end;
   if bcminute.Text = '1 minute' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '1');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '1');
   end;
   if bcminute.Text = '2 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '2');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '2');
   end;
   if bcminute.Text = '3 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '3');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '3');
   end;
   if bcminute.Text = '4 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '4');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '4');
   end;
   if bcminute.Text = '5 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '5');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '5');
   end;
   if bcminute.Text = '6 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '6');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '6');
   end;
   if bcminute.Text = '7 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '7');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '7');
   end;
   if bcminute.Text = '8 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '8');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '8');
   end;
   if bcminute.Text = '9 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '9');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '9');
   end;
   if bcminute.Text = '10 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '10');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '10');
   end;
   if bcminute.Text = '15 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '15');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '15');
   end;
   if bcminute.Text = '30 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '30');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '30');
   end;
   if bcminute.Text = '45 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '45');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '45');
   end;
   if bcminute.Text = '1 hour' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '60');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '60');
   end;
   if bcminute.Text = '90 minutes' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '90');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '90');
   end;
   if bcminute.Text = '2 hours' then
   begin
-    agcfg.writestring('zquest', 'auto_save_interval', '120');
+    zquestcfg.writestring('zquest', 'auto_save_interval', '120');
   end;
 end;
 
@@ -1252,11 +1266,11 @@ procedure TForm1.floatbrushChange(Sender: TObject);
 begin
   if floatbrush.Checked then
   begin
-    agcfg.writestring('zquest', 'float_brush', '1');
+    zquestcfg.writestring('zquest', 'float_brush', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'float_brush', '0');
+    zquestcfg.writestring('zquest', 'float_brush', '0');
   end;
 end;
 
@@ -1283,11 +1297,11 @@ procedure TForm1.rulesetChange(Sender: TObject);
 begin
   if ruleset.Checked then
   begin
-    agcfg.writestring('zquest', 'rulesetdialog', '1');
+    zquestcfg.writestring('zquest', 'rulesetdialog', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'rulesetdialog', '0');
+    zquestcfg.writestring('zquest', 'rulesetdialog', '0');
   end;
 end;
 
@@ -1295,11 +1309,11 @@ procedure TForm1.palcycChange(Sender: TObject);
 begin
   if palcyc.Checked then
   begin
-    agcfg.writestring('zquest', 'cycle_on', '1');
+    zquestcfg.writestring('zquest', 'cycle_on', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'cycle_on', '0');
+    zquestcfg.writestring('zquest', 'cycle_on', '0');
   end;
 end;
 
@@ -1307,11 +1321,11 @@ procedure TForm1.owriteprotectChange(Sender: TObject);
 begin
   if owriteprotect.Checked then
   begin
-    agcfg.writestring('zquest', 'overwrite_prevention', '1');
+    zquestcfg.writestring('zquest', 'overwrite_prevention', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'overwrite_prevention', '0');
+    zquestcfg.writestring('zquest', 'overwrite_prevention', '0');
   end;
 end;
 
@@ -1319,43 +1333,43 @@ procedure TForm1.scopyChange(Sender: TObject);
 begin
   if scopy.Text = '1' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '1');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '1');
   end;
   if scopy.Text = '2' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '2');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '2');
   end;
   if scopy.Text = '3' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '3');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '3');
   end;
   if scopy.Text = '4' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '4');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '4');
   end;
   if scopy.Text = '5' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '5');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '5');
   end;
   if scopy.Text = '6' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '6');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '6');
   end;
   if scopy.Text = '7' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '7');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '7');
   end;
   if scopy.Text = '8' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '8');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '8');
   end;
   if scopy.Text = '9' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '9');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '9');
   end;
   if scopy.Text = '10' then
   begin
-    agcfg.writestring('zquest', 'auto_save_retention', '10');
+    zquestcfg.writestring('zquest', 'auto_save_retention', '10');
   end;
 end;
 
@@ -1363,11 +1377,11 @@ procedure TForm1.tprotectChange(Sender: TObject);
 begin
   if tprotect.Checked then
   begin
-    agcfg.writestring('zquest', 'tile_protection', '1');
+    zquestcfg.writestring('zquest', 'tile_protection', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'tile_protection', '0');
+    zquestcfg.writestring('zquest', 'tile_protection', '0');
   end;
 end;
 
@@ -1375,11 +1389,11 @@ procedure TForm1.ttipsChange(Sender: TObject);
 begin
   if ttips.Checked then
   begin
-    agcfg.writestring('zquest', 'enable_tooltips', '1');
+    zquestcfg.writestring('zquest', 'enable_tooltips', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'enable_tooltips', '0');
+    zquestcfg.writestring('zquest', 'enable_tooltips', '0');
   end;
 end;
 
@@ -1387,52 +1401,52 @@ procedure TForm1.combobrushChange(Sender: TObject);
 begin
   if combobrush.Checked then
   begin
-    agcfg.writestring('zquest', 'combo_brush', '1');
+    zquestcfg.writestring('zquest', 'combo_brush', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'combo_brush', '0');
+    zquestcfg.writestring('zquest', 'combo_brush', '0');
   end;
 end;
 
 procedure TForm1.scalemodeChange(Sender: TObject);
 begin
-  if agcfg.ReadString('zquest', 'small', '') = '1' then
+  if zquestcfg.ReadString('zquest', 'small', '') = '1' then
   begin
     if scalemode.Text = '1x' then
     begin
-      agcfg.writeString('zquest', 'scale', '1');
+      zquestcfg.writeString('zquest', 'scale', '1');
     end;
     if scalemode.Text = '2x' then
     begin
-      agcfg.writeString('zquest', 'scale', '2');
+      zquestcfg.writeString('zquest', 'scale', '2');
     end;
     if scalemode.Text = '3x' then
     begin
-      agcfg.writeString('zquest', 'scale', '3');
+      zquestcfg.writeString('zquest', 'scale', '3');
     end;
     if scalemode.Text = '4x' then
     begin
-      agcfg.writeString('zquest', 'scale', '4');
+      zquestcfg.writeString('zquest', 'scale', '4');
     end;
   end
   else
   begin
     if scalemode.Text = '1x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '1');
+      zquestcfg.writeString('zquest', 'scale_large', '1');
     end;
     if scalemode.Text = '2x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '2');
+      zquestcfg.writeString('zquest', 'scale_large', '2');
     end;
     if scalemode.Text = '3x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '3');
+      zquestcfg.writeString('zquest', 'scale_large', '3');
     end;
     if scalemode.Text = '4x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '4');
+      zquestcfg.writeString('zquest', 'scale_large', '4');
     end;
   end;
 end;
@@ -1441,11 +1455,11 @@ procedure TForm1.uncompChange(Sender: TObject);
 begin
   if uncomp.Checked then
   begin
-    agcfg.writestring('zquest', 'uncompressed_auto_saves', '1');
+    zquestcfg.writestring('zquest', 'uncompressed_auto_saves', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'uncompressed_auto_saves', '0');
+    zquestcfg.writestring('zquest', 'uncompressed_auto_saves', '0');
   end;
 end;
 
@@ -1453,11 +1467,11 @@ procedure TForm1.usestaticChange(Sender: TObject);
 begin
   if usestatic.Checked then
   begin
-    agcfg.writestring('zquest', 'invalid_static', '1');
+    zquestcfg.writestring('zquest', 'invalid_static', '1');
   end
   else
   begin
-    agcfg.writestring('zquest', 'invalid_static', '0');
+    zquestcfg.writestring('zquest', 'invalid_static', '0');
   end;
 end;
 
@@ -1465,32 +1479,32 @@ procedure TForm1.tehschemeChange(Sender: TObject);
 begin
   if tehscheme.Text = 'Default' then
   begin
-    agcfg.WriteString('zeldadx', 'gui_colorset', '0');
-    agcfg.WriteString('zquest', 'gui_colorset', '0');
+    zccfg.WriteString('zeldadx', 'gui_colorset', '0');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '0');
     currentscheme.Picture := image2.Picture;
   end;
   if tehscheme.Text = 'Windows 98' then
   begin
-    agcfg.WriteString('zeldadx', 'gui_colorset', '1');
-    agcfg.WriteString('zquest', 'gui_colorset', '1');
+    zccfg.WriteString('zeldadx', 'gui_colorset', '1');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '1');
     currentscheme.Picture := image3.Picture;
   end;
   if tehscheme.Text = 'Gold' then
   begin
-    agcfg.WriteString('zeldadx', 'gui_colorset', '687');
-    agcfg.WriteString('zquest', 'gui_colorset', '687');
+    zccfg.WriteString('zeldadx', 'gui_colorset', '687');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '687');
     currentscheme.Picture := image4.Picture;
   end;
   if tehscheme.Text = 'Blue' then
   begin
-    agcfg.WriteString('zeldadx', 'gui_colorset', '3');
-    agcfg.WriteString('zquest', 'gui_colorset', '3');
+    zccfg.WriteString('zeldadx', 'gui_colorset', '3');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '3');
     currentscheme.Picture := image5.Picture;
   end;
   if tehscheme.Text = 'Pink' then
   begin
-    agcfg.WriteString('zeldadx', 'gui_colorset', '4104');
-    agcfg.WriteString('zquest', 'gui_colorset', '4104');
+    zccfg.WriteString('zeldadx', 'gui_colorset', '4104');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '4104');
     currentscheme.Picture := image6.Picture;
   end;
 end;
@@ -1499,11 +1513,11 @@ procedure TForm1.zqshowfpsChange(Sender: TObject);
 begin
   if zqshowfps.Text = 'Yes' then
   begin
-    agcfg.writestring('zquest', 'showfps', '1');
+    zquestcfg.writestring('zquest', 'showfps', '1');
   end;
   if zqshowfps.Text = 'No' then
   begin
-    agcfg.writestring('zquest', 'showfps', '0');
+    zquestcfg.writestring('zquest', 'showfps', '0');
   end;
 end;
 
@@ -1511,11 +1525,11 @@ procedure TForm1.zqfpslimitChange(Sender: TObject);
 begin
   if zqfpslimit.Text = 'Yes' then
   begin
-    agcfg.writestring('zquest', 'vsync', '1');
+    zquestcfg.writestring('zquest', 'vsync', '1');
   end;
   if zqfpslimit.Text = 'No' then
   begin
-    agcfg.writestring('zquest', 'vsync', '0');
+    zquestcfg.writestring('zquest', 'vsync', '0');
   end;
 end;
 
@@ -1601,7 +1615,7 @@ end;
 procedure TForm1.questmeClick(Sender: TObject);
 begin
   zquestopen.Execute;
-  agcfg.writestring('zquest', 'win_last_quest', zquestopen.FileName);
+  zquestcfg.writestring('zquest', 'win_last_quest', zquestopen.FileName);
 
 end;
 
@@ -1609,12 +1623,12 @@ procedure TForm1.zclimfpsChange(Sender: TObject);
 begin
   if zclimfps.Text = 'Yes' then
   begin
-    agcfg.writestring('zeldadx', 'throttlefps', '1');
+    zccfg.writestring('zeldadx', 'throttlefps', '1');
   end;
 
   if zclimfps.Text = 'No' then
   begin
-    agcfg.writestring('zeldadx', 'throttlefps', '0');
+    zccfg.writestring('zeldadx', 'throttlefps', '0');
   end;
 end;
 
@@ -1716,12 +1730,12 @@ procedure TForm1.zcshowfpsChange(Sender: TObject);
 begin
   if zcshowfps.Text = 'Yes' then
   begin
-    agcfg.writestring('zeldadx', 'showfps', '1');
+    zccfg.writestring('zeldadx', 'showfps', '1');
   end;
 
   if zcshowfps.Text = 'No' then
   begin
-    agcfg.writestring('zeldadx', 'showfps', '0');
+    zccfg.writestring('zeldadx', 'showfps', '0');
   end;
 end;
 
@@ -1759,29 +1773,29 @@ procedure TForm1.zcsshotChange(Sender: TObject);
 begin
   if zcsshot.Text = 'GIF' then
   begin
-    agcfg.writestring('zeldadx', 'snapshot_format', '1');
+    zccfg.writestring('zeldadx', 'snapshot_format', '1');
   end;
 
   if zcsshot.Text = 'BMP' then
   begin
-    agcfg.writestring('zeldadx', 'snapshot_format', '0');
+    zccfg.writestring('zeldadx', 'snapshot_format', '0');
   end;
 
   if zcsshot.Text = 'JPEG' then
   begin
-    agcfg.writestring('zeldadx', 'snapshot_format', '2');
+    zccfg.writestring('zeldadx', 'snapshot_format', '2');
   end;
   if zcsshot.Text = 'PCX' then
   begin
-    agcfg.writestring('zeldadx', 'snapshot_format', '4');
+    zccfg.writestring('zeldadx', 'snapshot_format', '4');
   end;
   if zcsshot.Text = 'TGA' then
   begin
-    agcfg.writestring('zeldadx', 'snapshot_format', '5');
+    zccfg.writestring('zeldadx', 'snapshot_format', '5');
   end;
   if zcsshot.Text = 'PNG' then
   begin
-    agcfg.writestring('zeldadx', 'snapshot_format', '3');
+    zccfg.writestring('zeldadx', 'snapshot_format', '3');
   end;
 end;
 
@@ -1790,58 +1804,58 @@ begin
   if zctitle.Text = 'Classic' then
   begin
     tscreen.picture := zclassic.picture;
-    agcfg.WriteString('zeldadx', 'title', '0');
+    zccfg.WriteString('zeldadx', 'title', '0');
   end;
   if zctitle.Text = 'Modern' then
   begin
     tscreen.picture := zelda20.picture;
-    agcfg.WriteString('zeldadx', 'title', '1');
+    zccfg.WriteString('zeldadx', 'title', '1');
   end;
   if zctitle.Text = 'New (2.5)' then
   begin
     tscreen.picture := zeldanew.picture;
-    agcfg.WriteString('zeldadx', 'title', '2');
+    zccfg.WriteString('zeldadx', 'title', '2');
   end;
 end;
 
 procedure TForm1.zinterfaceChange(Sender: TObject);
 begin
-  if agcfg.ReadString('zquest', 'small', '') = '1' then
+  if zquestcfg.ReadString('zquest', 'small', '') = '1' then
   begin
     if scalemode.Text = '1x' then
     begin
-      agcfg.writeString('zquest', 'scale', '1');
+      zquestcfg.writeString('zquest', 'scale', '1');
     end;
     if scalemode.Text = '2x' then
     begin
-      agcfg.writeString('zquest', 'scale', '2');
+      zquestcfg.writeString('zquest', 'scale', '2');
     end;
     if scalemode.Text = '3x' then
     begin
-      agcfg.writeString('zquest', 'scale', '3');
+      zquestcfg.writeString('zquest', 'scale', '3');
     end;
     if scalemode.Text = '4x' then
     begin
-      agcfg.writeString('zquest', 'scale', '4');
+      zquestcfg.writeString('zquest', 'scale', '4');
     end;
   end
   else
   begin
     if scalemode.Text = '1x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '1');
+      zquestcfg.writeString('zquest', 'scale_large', '1');
     end;
     if scalemode.Text = '2x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '2');
+      zquestcfg.writeString('zquest', 'scale_large', '2');
     end;
     if scalemode.Text = '3x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '3');
+      zquestcfg.writeString('zquest', 'scale_large', '3');
     end;
     if scalemode.Text = '4x' then
     begin
-      agcfg.writeString('zquest', 'scale_large', '4');
+      zquestcfg.writeString('zquest', 'scale_large', '4');
     end;
   end;
 
@@ -1849,40 +1863,40 @@ begin
 
   if zinterface.Text = 'Classic' then
   begin
-    agcfg.writestring('zquest', 'small', '1');
-    if agcfg.ReadString('zquest', 'scale', '') = '1' then
+    zquestcfg.writestring('zquest', 'small', '1');
+    if zquestcfg.ReadString('zquest', 'scale', '') = '1' then
     begin
       scalemode.Text := '1x';
     end;
-    if agcfg.ReadString('zquest', 'scale', '') = '2' then
+    if zquestcfg.ReadString('zquest', 'scale', '') = '2' then
     begin
       scalemode.Text := '2x';
     end;
-    if agcfg.ReadString('zquest', 'scale', '') = '3' then
+    if zquestcfg.ReadString('zquest', 'scale', '') = '3' then
     begin
       scalemode.Text := '3x';
     end;
-    if agcfg.ReadString('zquest', 'scale', '') = '4' then
+    if zquestcfg.ReadString('zquest', 'scale', '') = '4' then
     begin
       scalemode.Text := '4x';
     end;
   end;
   if zinterface.Text = 'New (2.5)' then
   begin
-    agcfg.writestring('zquest', 'small', '0');
-    if agcfg.ReadString('zquest', 'scale_large', '') = '1' then
+    zquestcfg.writestring('zquest', 'small', '0');
+    if zquestcfg.ReadString('zquest', 'scale_large', '') = '1' then
     begin
       scalemode.Text := '1x';
     end;
-    if agcfg.ReadString('zquest', 'scale_large', '') = '2' then
+    if zquestcfg.ReadString('zquest', 'scale_large', '') = '2' then
     begin
       scalemode.Text := '2x';
     end;
-    if agcfg.ReadString('zquest', 'scale_large', '') = '3' then
+    if zquestcfg.ReadString('zquest', 'scale_large', '') = '3' then
     begin
       scalemode.Text := '3x';
     end;
-    if agcfg.ReadString('zquest', 'scale_large', '') = '4' then
+    if zquestcfg.ReadString('zquest', 'scale_large', '') = '4' then
     begin
       scalemode.Text := '4x';
     end;
@@ -1909,47 +1923,47 @@ procedure TForm1.bcopyChange(Sender: TObject);
 begin
   if bcopy.Text = '0' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '0');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '0');
   end;
   if bcopy.Text = '1' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '1');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '1');
   end;
   if bcopy.Text = '2' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '2');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '2');
   end;
   if bcopy.Text = '3' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '3');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '3');
   end;
   if bcopy.Text = '4' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '4');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '4');
   end;
   if bcopy.Text = '5' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '5');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '5');
   end;
   if bcopy.Text = '6' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '6');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '6');
   end;
   if bcopy.Text = '7' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '7');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '7');
   end;
   if bcopy.Text = '8' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '8');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '8');
   end;
   if bcopy.Text = '9' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '9');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '9');
   end;
   if bcopy.Text = '10' then
   begin
-    agcfg.writestring('zquest', 'auto_backup_retention', '10');
+    zquestcfg.writestring('zquest', 'auto_backup_retention', '10');
   end;
 
 end;
@@ -1958,29 +1972,29 @@ procedure TForm1.zqsshotChange(Sender: TObject);
 begin
   if zqsshot.Text = 'GIF' then
   begin
-    agcfg.writestring('zquest', 'snapshot_format', '1');
+    zquestcfg.writestring('zquest', 'snapshot_format', '1');
   end;
 
   if zqsshot.Text = 'BMP' then
   begin
-    agcfg.writestring('zquest', 'snapshot_format', '0');
+    zquestcfg.writestring('zquest', 'snapshot_format', '0');
   end;
 
   if zqsshot.Text = 'JPEG' then
   begin
-    agcfg.writestring('zquest', 'snapshot_format', '2');
+    zquestcfg.writestring('zquest', 'snapshot_format', '2');
   end;
   if zqsshot.Text = 'PCX' then
   begin
-    agcfg.writestring('zquest', 'snapshot_format', '4');
+    zquestcfg.writestring('zquest', 'snapshot_format', '4');
   end;
   if zqsshot.Text = 'TGA' then
   begin
-    agcfg.writestring('zquest', 'snapshot_format', '5');
+    zquestcfg.writestring('zquest', 'snapshot_format', '5');
   end;
   if zqsshot.Text = 'PNG' then
   begin
-    agcfg.writestring('zquest', 'snapshot_format', '3');
+    zquestcfg.writestring('zquest', 'snapshot_format', '3');
   end;
 end;
 
@@ -1988,54 +2002,54 @@ procedure TForm1.zqwinmodeChange(Sender: TObject);
 begin
   if zqwinmode.Text = 'Full Screen' then
   begin
-    agcfg.writestring('zquest', 'fullscreen', '1');
-    agcfg.writestring('zquest', 'scale', '1');
-    agcfg.writestring('zquest', 'scale_large', '1');
+    zquestcfg.writestring('zquest', 'fullscreen', '1');
+    zquestcfg.writestring('zquest', 'scale', '1');
+    zquestcfg.writestring('zquest', 'scale_large', '1');
     scaletext.Visible := False;
     scalemode.Visible := False;
   end;
 
   if zqwinmode.Text = 'Window' then
   begin
-    agcfg.writestring('zquest', 'fullscreen', '0');
+    zquestcfg.writestring('zquest', 'fullscreen', '0');
     scaletext.Visible := True;
     scalemode.Visible := True;
     scalemode.Text := '1x';
 
-    if agcfg.ReadString('zquest', 'small', '') = '1' then
+    if zquestcfg.ReadString('zquest', 'small', '') = '1' then
     begin
-      if agcfg.ReadString('zquest', 'scale', '') = '1' then
+      if zquestcfg.ReadString('zquest', 'scale', '') = '1' then
       begin
         scalemode.Text := '1x';
       end;
-      if agcfg.ReadString('zquest', 'scale', '') = '2' then
+      if zquestcfg.ReadString('zquest', 'scale', '') = '2' then
       begin
         scalemode.Text := '2x';
       end;
-      if agcfg.ReadString('zquest', 'scale', '') = '3' then
+      if zquestcfg.ReadString('zquest', 'scale', '') = '3' then
       begin
         scalemode.Text := '3x';
       end;
-      if agcfg.ReadString('zquest', 'scale', '') = '4' then
+      if zquestcfg.ReadString('zquest', 'scale', '') = '4' then
       begin
         scalemode.Text := '4x';
       end;
     end
     else
     begin
-      if agcfg.ReadString('zquest', 'scale_large', '') = '1' then
+      if zquestcfg.ReadString('zquest', 'scale_large', '') = '1' then
       begin
         scalemode.Text := '1x';
       end;
-      if agcfg.ReadString('zquest', 'scale_large', '') = '2' then
+      if zquestcfg.ReadString('zquest', 'scale_large', '') = '2' then
       begin
         scalemode.Text := '2x';
       end;
-      if agcfg.ReadString('zquest', 'scale_large', '') = '3' then
+      if zquestcfg.ReadString('zquest', 'scale_large', '') = '3' then
       begin
         scalemode.Text := '3x';
       end;
-      if agcfg.ReadString('zquest', 'scale_large', '') = '4' then
+      if zquestcfg.ReadString('zquest', 'scale_large', '') = '4' then
       begin
         scalemode.Text := '4x';
       end;
@@ -2048,32 +2062,32 @@ begin
   if scrreszc.Text = '320x240' then
   begin
     Res1 := '-res 320 240 ';
-    agcfg.writestring('zeldadx', 'resx', '320');
-    agcfg.writestring('zeldadx', 'resy', '240');
+    zccfg.writestring('zeldadx', 'resx', '320');
+    zccfg.writestring('zeldadx', 'resy', '240');
   end
   else if scrreszc.Text = '640x480' then
   begin
     Res1 := '-res 640 480 ';
-    agcfg.writestring('zeldadx', 'resx', '640');
-    agcfg.writestring('zeldadx', 'resy', '480');
+    zccfg.writestring('zeldadx', 'resx', '640');
+    zccfg.writestring('zeldadx', 'resy', '480');
   end
   else if scrreszc.Text = '960x720' then
   begin
     Res1 := '-res 960 720 ';
-    agcfg.writestring('zeldadx', 'resx', '960');
-    agcfg.writestring('zeldadx', 'resy', '720');
+    zccfg.writestring('zeldadx', 'resx', '960');
+    zccfg.writestring('zeldadx', 'resy', '720');
   end
   else if scrreszc.Text = '1280x960' then
   begin
     Res1 := '-res 1280 960 ';
-    agcfg.writestring('zeldadx', 'resx', '1280');
-    agcfg.writestring('zeldadx', 'resy', '960');
+    zccfg.writestring('zeldadx', 'resx', '1280');
+    zccfg.writestring('zeldadx', 'resy', '960');
   end
   else if scrreszc.Text = '1600x1200' then
   begin
     Res1 := '-res 1600 1200 ';
-    agcfg.writestring('zeldadx', 'resx', '1600');
-    agcfg.writestring('zeldadx', 'resy', '1200');
+    zccfg.writestring('zeldadx', 'resx', '1600');
+    zccfg.writestring('zeldadx', 'resy', '1200');
   end;
 end;
 
@@ -2081,11 +2095,11 @@ procedure TForm1.zcbeepChange(Sender: TObject);
 begin
   if zcbeep.Text = 'Yes' then
   begin
-    agcfg.writestring('zeldadx', 'heart_beep', '1');
+    zccfg.writestring('zeldadx', 'heart_beep', '1');
   end;
   if zcbeep.Text = 'No' then
   begin
-    agcfg.writestring('zeldadx', 'heart_beep', '0');
+    zccfg.writestring('zeldadx', 'heart_beep', '0');
   end;
 end;
 
@@ -2093,17 +2107,17 @@ procedure TForm1.zcentrymodeChange(Sender: TObject);
 begin
   if zcentrymode.Text = 'Keyboard' then
   begin
-    agcfg.writestring('zeldadx', 'name_entry_mode', '0');
+    zccfg.writestring('zeldadx', 'name_entry_mode', '0');
   end;
 
   if zcentrymode.Text = 'Letter Grid' then
   begin
-    agcfg.writestring('zeldadx', 'name_entry_mode', '1');
+    zccfg.writestring('zeldadx', 'name_entry_mode', '1');
   end;
 
   if zcentrymode.Text = 'Extended Letter Grid' then
   begin
-    agcfg.writestring('zeldadx', 'name_entry_mode', '2');
+    zccfg.writestring('zeldadx', 'name_entry_mode', '2');
   end;
 end;
 
