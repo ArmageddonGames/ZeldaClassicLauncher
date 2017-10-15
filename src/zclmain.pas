@@ -1137,13 +1137,13 @@ end;
 procedure TForm1.BitBtn2Click(Sender: TObject);
 begin
 {$IFDEF LINUX}
-  process2.CommandLine := './zquest' + zqsound;
+  process2.CommandLine := './zquest ' + zqsound;
   process2.Execute;
 
 {$ENDIF}
 
 {$IFDEF WIN32}
-  process2.CommandLine := './zquest.exe' + zqsound;
+  process2.CommandLine := './zquest.exe ' + zqsound;
   process2.Execute;
 
 {$ENDIF}

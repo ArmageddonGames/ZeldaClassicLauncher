@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 611
+  Left = 572
   Height = 430
-  Top = 133
+  Top = 118
   Width = 586
   HorzScrollBar.Page = 585
   HorzScrollBar.Range = 585
@@ -10,7 +10,7 @@ object Form1: TForm1
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Zelda Classic Launcher 2.6.3'
+  Caption = 'Zelda Classic Launcher 2.6.4'
   ClientHeight = 430
   ClientWidth = 586
   Color = clForm
@@ -17539,13 +17539,13 @@ object Form1: TForm1
     Hint = 'Allegro configuration properties, and drivers.'
     Top = 65
     Width = 586
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Align = alClient
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Images = ImageList1
     ParentFont = False
-    TabIndex = 4
+    TabIndex = 0
     TabOrder = 0
     OnChange = AllegroChange
     object TabSheet1: TTabSheet
@@ -31144,10 +31144,10 @@ object Form1: TForm1
   end
   object Process1: TProcess
     Active = False
-    ApplicationName = 'zelda-w.exe'
-    CommandLine = 'zelda-w.exe'
-    Executable = 'zelda-w.exe'
-    ConsoleTitle = 'zelda-w.exe'
+    ApplicationName = 'zelda.exe'
+    CommandLine = 'zelda.exe'
+    Executable = 'zelda.exe'
+    ConsoleTitle = 'zelda.exe'
     CurrentDirectory = './'
     Options = []
     Priority = ppNormal
@@ -31164,10 +31164,10 @@ object Form1: TForm1
   end
   object Process2: TProcess
     Active = False
-    ApplicationName = 'zquest-w.exe'
-    CommandLine = 'zquest-w.exe'
-    Executable = 'zquest-w.exe'
-    ConsoleTitle = 'zquest-w.exe'
+    ApplicationName = 'zquest.exe'
+    CommandLine = 'zquest.exe'
+    Executable = 'zquest.exe'
+    ConsoleTitle = 'zquest.exe'
     CurrentDirectory = './'
     Options = []
     Priority = ppNormal
@@ -31687,10 +31687,10 @@ object Form1: TForm1
   end
   object Process3: TProcess
     Active = False
-    ApplicationName = 'romview-w.exe'
-    CommandLine = 'romview-w.exe'
-    Executable = 'romview-w.exe'
-    ConsoleTitle = 'romview-w.exe'
+    ApplicationName = 'romview.exe'
+    CommandLine = 'romview.exe'
+    Executable = 'romview.exe'
+    ConsoleTitle = 'romview.exe'
     CurrentDirectory = './'
     Options = []
     Priority = ppNormal
