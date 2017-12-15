@@ -2,6 +2,10 @@ ZCL Changelog
 
 Version 2.6.x
 
+2.6.5
+Fixed 'Show Misaligns' in ZQuest Options 2 not setting the zquest.cfg value. 
+	( ZoriaRPG, 15th December, 2017 )
+
 2.6.4
 
 Fixed calls fromn the button UI to zelda-w.exe and zquest-w.exe to use zelda.exe and zquest.exe.  ( ZoriaRPG, 15th October, 2017 )
