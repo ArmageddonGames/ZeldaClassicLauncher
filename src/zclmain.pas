@@ -1015,7 +1015,7 @@ end;
 
 procedure TForm1.CheckBox38Change(Sender: TObject);
 begin
-  if checkbox37.Checked then
+  if checkbox38.Checked then
   begin
     zquestcfg.writestring('zquest', 'show_misalignments', '1');
   end
