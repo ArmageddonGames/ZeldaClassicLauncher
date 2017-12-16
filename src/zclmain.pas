@@ -1030,6 +1030,31 @@ begin
     speedbutton2.Enabled := False;
   end;
 {$endif}
+
+
+{$ifdef BSD}
+  if fileexists('zelda') then
+  begin
+  end
+  else
+  begin
+    label23.Visible := True;
+    speedbutton1.Enabled := False;
+    speedbutton2.Enabled := False;
+  end;
+{$endif}
+
+{$ifdef DAWRIN}
+  if fileexists('zelda') then
+  begin
+  end
+  else
+  begin
+    label23.Visible := True;
+    speedbutton1.Enabled := False;
+    speedbutton2.Enabled := False;
+  end;
+{$endif}
 end;
 
 procedure TForm1.CheckBox2Change(Sender: TObject);
@@ -1144,6 +1169,39 @@ end;
 }
 {$ENDIF}
 
+//OSX
+{$IFDEF BSD}
+{
+//process1.applicationname := 'zelda';
+process1.CommandLine := './zelda ' + edit4.Caption + edit7.Caption + edit8.Caption + edit9.caption + edit10.caption;
+process1.Active := true;
+memo3.Lines.LoadFromFile('allegro.log');
+}
+
+
+  process1.CommandLine := './zelda ' + ZCFullWindow + Res1 +
+    Sound1 + Logo1 + multizc + Quickload + LoadQuest;
+  process1.Execute;
+  //memo3.Lines.LoadFromFile('allegro.log');
+
+{$ENDIF}
+
+{$IFDEF DARWIN}
+{
+//process1.applicationname := 'zelda';
+process1.CommandLine := './zelda ' + edit4.Caption + edit7.Caption + edit8.Caption + edit9.caption + edit10.caption;
+process1.Active := true;
+memo3.Lines.LoadFromFile('allegro.log');
+}
+
+
+  process1.CommandLine := './zelda ' + ZCFullWindow + Res1 +
+    Sound1 + Logo1 + multizc + Quickload + LoadQuest;
+  process1.Execute;
+  //memo3.Lines.LoadFromFile('allegro.log');
+
+{$ENDIF}
+
 end;
 
 procedure TForm1.bcminuteChange(Sender: TObject);
@@ -1228,6 +1286,19 @@ begin
 
 {$IFDEF WIN32}
   process2.CommandLine := './zquest.exe ' + zqsound;
+  process2.Execute;
+
+{$ENDIF}
+
+//OSX
+{$IFDEF BSD}
+  process2.CommandLine := './zquest ' + zqsound;
+  process2.Execute;
+
+{$ENDIF}
+
+{$IFDEF DARWIN}
+  process2.CommandLine := './zquest ' + zqsound;
   process2.Execute;
 
 {$ENDIF}
@@ -1344,6 +1415,20 @@ begin
 
 {$IFDEF WIN32}
   process3.CommandLine := './romview.exe' + zqsound;
+  process3.Execute;
+
+{$ENDIF}
+
+//OSX
+
+{$IFDEF BSD}
+  process3.CommandLine := './romview' + zqsound;
+  process3.Execute;
+
+{$ENDIF}
+
+{$IFDEF DARWIN}
+  process3.CommandLine := './romview' + zqsound;
   process3.Execute;
 
 {$ENDIF}
