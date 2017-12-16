@@ -2,6 +2,10 @@ ZCL Changelog
 
 Version 2.6.x
 
+2.6.6
+Added Linux video drivers, and MacOSX Video drivers.
+Streamlined the drivers interface to one TCombo pair. ( ZoriaRPG 16th December, 2017 )
+
 2.6.5
 Fixed 'Show Misaligns' in ZQuest Options 2 not setting the zquest.cfg value. 
 	( ZoriaRPG, 15th December, 2017 )
