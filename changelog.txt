@@ -2,6 +2,9 @@ ZCL Changelog
 
 Version 2.6.x
 
+2.6.7
+Added preliminary OSX support.
+
 2.6.6
 Added Linux video drivers, and MacOSX Video drivers.
 Streamlined the drivers interface to one TCombo pair. ( ZoriaRPG 16th December, 2017 )
