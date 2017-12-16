@@ -23,6 +23,8 @@ type
     Button3: TButton;
     agviddriverw: TComboBox;
     agviddriver: TComboBox;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
     Label22: TLabel;
     Label24: TLabel;
     Label25: TLabel;
@@ -57,6 +59,8 @@ type
     TabSheet4: TTabSheet;
     TabSheet7: TTabSheet;
     TabSheet8: TTabSheet;
+    tprotect1: TCheckBox;
+    tprotect2: TCheckBox;
     ttips: TCheckBox;
     combobrush: TCheckBox;
     floatbrush: TCheckBox;
@@ -142,6 +146,7 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure agviddriverChange(Sender: TObject);
+    procedure ComboBox2Change(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure Label22Click(Sender: TObject);
     procedure AllegroChange(Sender: TObject);
@@ -874,6 +879,85 @@ begin
       agviddriver.Text := 'GDI (Slow)';
     end;
     {$ENDIF}
+
+    //Linux Video Drivers
+     {$IFDEF LINUX}
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'SVGA' then
+    begin
+      agviddriverw.Text := 'SVGA';
+    end;
+   if zccfg.readstring('graphics', 'gfx_cardw', '') = 'MODX' then
+    begin
+      agviddriverw.Text := 'ModeX';
+    end;
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'VGA'  then
+    begin
+      agviddriverw.Text := 'VGA';
+    end;
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'FB' then
+    begin
+      agviddriverw.Text := 'FBCon Device';
+    end;
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'VBAF'  then
+    begin
+      agviddriverw.Text := 'VBE/AF';
+    end;
+
+    //Video Drivers (Fullscreen, Windows)
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'SVGA' then
+    begin
+      agviddriver.Text := 'SVGA';
+    end;
+   if zccfg.readstring('graphics', 'gfx_card', '') = 'MODX' then
+    begin
+      agviddriver.Text := 'Mode X';
+    end;
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'VGA'  then
+    begin
+      agviddriver.Text := 'VGA';
+    end;
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'FB' then
+    begin
+      agviddriver.Text := 'FBCon Device';
+    end;
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'VBAF'  then
+    begin
+      agviddriver.Text := 'VBE/AF';
+    end;
+
+    {$ENDIF}
+
+    //OSX Video Drivers
+     {$IFDEF BSD}
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'QZWN' then
+    begin
+      agviddriverw.Text := 'Quartz';
+    end;
+
+    //Video Drivers (Fullscreen, Windows)
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'QZFL' then
+    begin
+      agviddriver.Text := 'Quartz';
+    end;
+
+
+    {$ENDIF}
+
+     {$IFDEF DAWRIN}
+    if zccfg.readstring('graphics', 'gfx_cardw', '') = 'QZWN' then
+    begin
+      agviddriverw.Text := 'Quartz';
+    end;
+
+    //Video Drivers (Fullscreen, Windows)
+    if zccfg.readstring('graphics', 'gfx_card', '') = 'QZFL' then
+    begin
+      agviddriver.Text := 'Quartz';
+    end;
+
+
+    {$ENDIF}
+
     //Color Scheme
     if zccfg.readString('zeldadx', 'gui_colorset', '') = '0' then
     begin
@@ -1152,31 +1236,27 @@ end;
 
 procedure TForm1.ComboBox1Change(Sender: TObject);
 begin
-  {$IFDEF WIN32}
-  if agviddriverw.Text = 'DirectDraw' then
+  {$IFDEF LINUX}
+  if agviddriverw.Text = 'SVGA' then
   begin
-    zccfg.writestring('graphics', 'gfx_cardw', 'DXAC');
+    zccfg.writestring('graphics', 'gfx_cardw', 'SVGA');
   end;
 
-  if agviddriverw.Text = 'DirectDraw No Accel' then
+  if agviddriverw.Text = 'Mode X' then
   begin
-    zccfg.writestring('graphics', 'gfx_cardw', 'DXSO');
+    zccfg.writestring('graphics', 'gfx_cardw', 'MODX');
   end;
-  if agviddriverw.Text = 'DirectDraw Safe' then
+  if agviddriverw.Text = 'VGA' then
   begin
-    zccfg.writestring('graphics', 'gfx_cardw', 'DXSA');
+    zccfg.writestring('graphics', 'gfx_cardw', 'VGA');
   end;
-  if agviddriverw.Text = 'DirectDraw Windowed' then
+  if agviddriverw.Text = 'FBCon Device' then
   begin
-    zccfg.writestring('graphics', 'gfx_cardw', 'DXWN');
+    zccfg.writestring('graphics', 'gfx_cardw', 'FB');
   end;
-  if agviddriverw.Text = 'DirectDraw Overlay' then
+  if agviddriverw.Text = 'VBE/AF' then
   begin
-    zccfg.writestring('graphics', 'gfx_cardw', 'DXOV');
-  end;
-  if agviddriverw.Text = 'GDI (Slow)' then
-  begin
-    zccfg.writestring('graphics', 'gfx_cardw', 'GDIB');
+    zccfg.writestring('graphics', 'gfx_cardw', 'VBAF');
   end;
   {$ENDIF}
 end;
@@ -1208,6 +1288,33 @@ begin
   if agviddriverw.Text = 'GDI (Slow)' then
   begin
     zccfg.writestring('graphics', 'gfx_card', 'GDIB');
+  end;
+  {$ENDIF}
+end;
+
+procedure TForm1.ComboBox2Change(Sender: TObject);
+begin
+   {$IFDEF LINUX}
+  if agviddriver.Text = 'SVGA' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'SVGA');
+  end;
+
+  if agviddriver.Text = 'Mode X' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'MODX');
+  end;
+  if agviddriver.Text = 'VGA' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'VGA');
+  end;
+  if agviddriver.Text = 'FBCon Device' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'FB');
+  end;
+  if agviddriver.Text = 'VBE/AF' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'VBAF');
   end;
   {$ENDIF}
 end;
@@ -1605,6 +1712,29 @@ begin
     zquestcfg.writestring('graphics', 'gfx_cardw', 'GBID');
   end;
   {$ENDIF}
+   {$IFDEF LINUX}
+  if agviddriverw.Text = 'SVGA' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'SVGA');
+  end;
+
+  if agviddriverw.Text = 'Mode X' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'MODX');
+  end;
+  if agviddriverw.Text = 'VGA' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'VGA');
+  end;
+  if agviddriverw.Text = 'FBCon Device' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'FB');
+  end;
+  if agviddriverw.Text = 'VBE/AF' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'VBAF');
+  end;
+  {$ENDIF}
 end;
 
 //Fullscreen, Windows
@@ -1647,6 +1777,29 @@ begin
     zccfg.writestring('graphics', 'gfx_card', 'GDIB');
     zccfg.writestring('graphics', 'gfx_card', 'GDIB');
     zquestcfg.writestring('graphics', 'gfx_card', 'GDIB');
+  end;
+  {$ENDIF}
+    {$IFDEF LINUX}
+  if agviddriver.Text = 'SVGA' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'SVGA');
+  end;
+
+  if agviddriver.Text = 'Mode X' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'MODX');
+  end;
+  if agviddriver.Text = 'VGA' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'VGA');
+  end;
+  if agviddriver.Text = 'FBCon Device' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'FB');
+  end;
+  if agviddriver.Text = 'VBE/AF' then
+  begin
+    zccfg.writestring('graphics', 'gfx_cardw', 'VBAF');
   end;
   {$ENDIF}
 end;
