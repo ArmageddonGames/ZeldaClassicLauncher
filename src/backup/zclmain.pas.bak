@@ -1419,6 +1419,20 @@ begin
 
 {$ENDIF}
 
+//OSX
+
+{$IFDEF BSD}
+  process3.CommandLine := './romview' + zqsound;
+  process3.Execute;
+
+{$ENDIF}
+
+{$IFDEF DARWIN}
+  process3.CommandLine := './romview' + zqsound;
+  process3.Execute;
+
+{$ENDIF}
+
 end;
 procedure TForm1.Button2Click(Sender: TObject);
 begin

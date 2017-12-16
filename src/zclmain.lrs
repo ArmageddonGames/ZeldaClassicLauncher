@@ -5,7 +5,7 @@ LazarusResources.Add('TForm1','FORMDATA',[
   +'Width'#3'J'#2#18'HorzScrollBar.Page'#3'I'#2#19'HorzScrollBar.Range'#3'I'#2
   +#18'VertScrollBar.Page'#3'w'#1#19'VertScrollBar.Range'#3'x'#1#21'VertScrollB'
   +'ar.Visible'#8#11'BorderIcons'#11#12'biSystemMenu'#10'biMinimize'#0#11'Borde'
-  +'rStyle'#7#8'bsSingle'#7'Caption'#6#28'Zelda Classic Launcher 2.6.6'#12'Clie'
+  +'rStyle'#7#8'bsSingle'#7'Caption'#6#28'Zelda Classic Launcher 2.6.7'#12'Clie'
   +'ntHeight'#3#174#1#11'ClientWidth'#3'J'#2#5'Color'#7#6'clForm'#10'Font.Color'
   +#7#7'clWhite'#11'Font.Height'#2#245#9'Font.Name'#6#13'MS Sans Serif'#9'Icon.'
   +'Data'#10#250#135#4#0#246#135#4#0#0#0#1#0#13#0'00'#2#0#1#0#1#0'0'#3#0#0#214#0
