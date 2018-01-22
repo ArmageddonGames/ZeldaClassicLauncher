@@ -903,7 +903,7 @@ begin
       agviddriverw.Text := 'VBE/AF';
     end;
 
-    //Video Drivers (Fullscreen, Windows)
+    //Video Drivers (Fullscreen, Linux)
     if zccfg.readstring('graphics', 'gfx_card', '') = 'SVGA' then
     begin
       agviddriver.Text := 'SVGA';

@@ -10,7 +10,7 @@ object Form1: TForm1
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Zelda Classic Launcher 2.6.7'
+  Caption = 'Zelda Classic Launcher 2.6.8 ( for ZC 2.53.0 or later )'
   ClientHeight = 430
   ClientWidth = 586
   Color = clForm
@@ -30958,13 +30958,14 @@ object Form1: TForm1
       object agviddriverw: TComboBox
         Left = 204
         Height = 21
+        Hint = 'Set the video driver that ZC uses.'
         Top = 32
-        Width = 100
+        Width = 140
         ItemHeight = 13
         Items.Strings = (
           '--WINDOWS--'
           'DirectDraw'
-          'DirectDraw No Accel.'
+          'DirectDraw No Accel'
           'DirectDraw Safe'
           'DirectDraw Windowed'
           'DirectDraw Overlay'
@@ -30989,12 +30990,12 @@ object Form1: TForm1
         Left = 204
         Height = 21
         Top = 60
-        Width = 100
+        Width = 140
         ItemHeight = 13
         Items.Strings = (
           '--WINDOWS--'
           'DirectDraw'
-          'DirectDraw No Accel.'
+          'DirectDraw No Accel'
           'DirectDraw Safe'
           'DirectDraw Windowed'
           'DirectDraw Overlay'

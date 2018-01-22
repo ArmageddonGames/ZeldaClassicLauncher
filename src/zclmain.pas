@@ -903,7 +903,7 @@ begin
       agviddriverw.Text := 'VBE/AF';
     end;
 
-    //Video Drivers (Fullscreen, Windows)
+    //Video Drivers (Fullscreen, Linux)
     if zccfg.readstring('graphics', 'gfx_card', '') = 'SVGA' then
     begin
       agviddriver.Text := 'SVGA';
@@ -1793,8 +1793,8 @@ begin
   if agviddriverw.Text = 'GDI (Slow)' then
   begin
     agcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
-    zccfg.writestring('graphics', 'gfx_cardw', 'GBID');
-    zquestcfg.writestring('graphics', 'gfx_cardw', 'GBID');
+    zccfg.writestring('graphics', 'gfx_cardw', 'GDIB');
+    zquestcfg.writestring('graphics', 'gfx_cardw', 'GDIB');
   end;
   {$ENDIF}
    {$IFDEF LINUX}
