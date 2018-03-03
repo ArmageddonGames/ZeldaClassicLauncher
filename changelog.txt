@@ -2,9 +2,12 @@ ZCL Changelog
 
 Version 2.6.x
 
+2.6.9
+Removed extra instance of 'Til;e Protection' box.
+	( ZoriaRPG, 3rd March, 2018 )
 2.6.8
 Changed the titlebar text to indicate that ZC 2.53.0 or higher is required for ZCL.
-Fixed the text set by GDI mode (was setting the .cfg string to GBID, not DGIB)
+Fixed the text set by GDI mode (was setting the .cfg string to GBID, not GDIB)
 Widened the pulldown combo-boxes under the drivers tab so that the options are completely visible. 
 	( ZoriaRPG, 22nd January, 2018 )
 	
