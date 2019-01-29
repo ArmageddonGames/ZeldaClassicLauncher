@@ -25,6 +25,9 @@ type
     agviddriver: TComboBox;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
+    Image10: TImage;
+    Image8: TImage;
+    Image9: TImage;
     Label22: TLabel;
     Label24: TLabel;
     Label25: TLabel;
@@ -146,6 +149,10 @@ type
     procedure ComboBox1Change(Sender: TObject);
     procedure agviddriverChange(Sender: TObject);
     procedure ComboBox2Change(Sender: TObject);
+    procedure currentschemeClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure Label22Click(Sender: TObject);
     procedure AllegroChange(Sender: TObject);
@@ -1389,6 +1396,26 @@ begin
   {$ENDIF}
 end;
 
+procedure TForm1.currentschemeClick(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Image2Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Image3Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Image6Click(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.Label1Click(Sender: TObject);
 begin
 
@@ -1688,6 +1715,18 @@ begin
     zccfg.WriteString('zeldadx', 'gui_colorset', '0');
     zquestcfg.WriteString('zquest', 'gui_colorset', '0');
     currentscheme.Picture := image2.Picture;
+  end;
+  if tehscheme.Text = 'Dark' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '2019');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '2019');
+    currentscheme.Picture := image9.Picture;
+  end;
+  if tehscheme.Text = 'October' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '201018');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '201018');
+    currentscheme.Picture := image10.Picture;
   end;
   if tehscheme.Text = 'Windows 98' then
   begin
