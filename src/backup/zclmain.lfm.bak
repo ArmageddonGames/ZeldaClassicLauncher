@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 319
+  Left = 457
   Height = 431
-  Top = 147
+  Top = 198
   Width = 586
   HorzScrollBar.Page = 585
   HorzScrollBar.Range = 585
@@ -17539,18 +17539,18 @@ object Form1: TForm1
     Hint = 'Allegro configuration properties, and drivers.'
     Top = 65
     Width = 586
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Align = alClient
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Images = ImageList1
     ParentFont = False
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 0
     OnChange = AllegroChange
     object TabSheet1: TTabSheet
       Caption = 'Zelda Classic'
-      ClientHeight = 296
+      ClientHeight = 297
       ClientWidth = 578
       ImageIndex = 5
       object Label1: TLabel

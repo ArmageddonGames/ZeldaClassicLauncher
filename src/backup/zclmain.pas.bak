@@ -382,7 +382,7 @@ begin
     end;
 
     //ZC Skip Agn Logo
-    if zccfg.readstring('ZCL', 'zcfast', '') = '1' then
+    if zccfg.readstring('zeldadx', 'zcfast', '') = '1' then
     begin
       zcskiplogo.Text := 'Yes';
       Logo1 := '-fast ';
@@ -2059,13 +2059,15 @@ begin
   if zcskiplogo.Text = 'Yes' then
   begin
     Logo1 := '-fast ';
-    agcfg.writestring('ZCL', 'zcfast', '1');
+    //agcfg.writestring('ZCL', 'zcfast', '1');
+    zccfg.writestring('zeldadx', 'zcfast', '1');
   end;
 
   if zcskiplogo.Text = 'No' then
   begin
     Logo1 := ' ';
-    agcfg.writestring('ZCL', 'zcfast', '0');
+    //agcfg.writestring('ZCL', 'zcfast', '0');
+    zccfg.writestring('zeldadx', 'zcfast', '0');
   end;
 end;
 
