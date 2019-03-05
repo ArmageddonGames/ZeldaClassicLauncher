@@ -62,7 +62,6 @@ type
     TabSheet4: TTabSheet;
     TabSheet7: TTabSheet;
     TabSheet8: TTabSheet;
-    tprotect2: TCheckBox;
     ttips: TCheckBox;
     combobrush: TCheckBox;
     floatbrush: TCheckBox;
