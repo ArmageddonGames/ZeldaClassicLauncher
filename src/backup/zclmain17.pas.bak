@@ -1032,7 +1032,7 @@ begin
     //Color Scheme
     if zccfg.readString('zeldadx', 'gui_colorset', '') = '0' then
     begin
-      tehscheme.Text := 'Default';
+      tehscheme.Text := 'Classic';
       currentscheme.Picture := image2.Picture;
     end;
     if zccfg.readString('zeldadx', 'gui_colorset', '') = '1' then
@@ -1054,6 +1054,16 @@ begin
     begin
       tehscheme.Text := 'Pink';
       currentscheme.Picture := image6.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '2019' then
+    begin
+      tehscheme.Text := 'Dark';
+      currentscheme.Picture := image9.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '201018' then
+    begin
+      tehscheme.Text := 'October';
+      currentscheme.Picture := image10.Picture;
     end;
 {$IFDEF WIN32}
     if zccfg.ReadString('graphics', 'disable_direct_updating', 'unset') = 'unset' then
@@ -1873,7 +1883,7 @@ end;
 
 procedure TForm1.tehschemeChange(Sender: TObject);
 begin
-  if tehscheme.Text = 'Default' then
+  if tehscheme.Text = 'Classic' then
   begin
     zccfg.WriteString('zeldadx', 'gui_colorset', '0');
     zquestcfg.WriteString('zquest', 'gui_colorset', '0');

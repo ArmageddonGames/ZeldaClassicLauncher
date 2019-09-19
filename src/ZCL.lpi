@@ -67,8 +67,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="830"/>
-        <CursorPos X="7" Y="841"/>
+        <TopLine Value="1874"/>
+        <CursorPos X="30" Y="1876"/>
         <UsageCount Value="208"/>
         <Bookmarks Count="2">
           <Item0 ID="1"/>
@@ -98,123 +98,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2090" Column="3" TopLine="2086"/>
+        <Caret Line="1529" Column="4" TopLine="1527"/>
       </Position1>
       <Position2>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1469" Column="4" TopLine="1467"/>
+        <Caret Line="1564" Column="18" TopLine="1552"/>
       </Position2>
       <Position3>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1529" Column="4" TopLine="1527"/>
+        <Caret Line="2027" Column="18" TopLine="2015"/>
       </Position3>
       <Position4>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1564" Column="18" TopLine="1552"/>
+        <Caret Line="2030" Column="6" TopLine="2018"/>
       </Position4>
       <Position5>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2027" Column="18" TopLine="2015"/>
+        <Caret Line="2027" TopLine="2021"/>
       </Position5>
       <Position6>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2030" Column="6" TopLine="2018"/>
+        <Caret Line="1564" Column="18" TopLine="1552"/>
       </Position6>
       <Position7>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2027" TopLine="2021"/>
+        <Caret Line="1563" TopLine="1552"/>
       </Position7>
       <Position8>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1564" Column="18" TopLine="1552"/>
+        <Caret Line="2603" TopLine="2579"/>
       </Position8>
       <Position9>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1563" TopLine="1552"/>
+        <Caret Line="1609" Column="12" TopLine="1597"/>
       </Position9>
       <Position10>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2603" TopLine="2579"/>
+        <Caret Line="1608" Column="12" TopLine="1596"/>
       </Position10>
       <Position11>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1609" Column="12" TopLine="1597"/>
+        <Caret Line="1607" Column="12" TopLine="1595"/>
       </Position11>
       <Position12>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1608" Column="12" TopLine="1596"/>
+        <Caret Line="1606" Column="12" TopLine="1594"/>
       </Position12>
       <Position13>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1607" Column="12" TopLine="1595"/>
+        <Caret Line="1605" Column="12" TopLine="1593"/>
       </Position13>
       <Position14>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1606" Column="12" TopLine="1594"/>
+        <Caret Line="1604" Column="12" TopLine="1592"/>
       </Position14>
       <Position15>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1605" Column="12" TopLine="1593"/>
+        <Caret Line="1603" Column="12" TopLine="1591"/>
       </Position15>
       <Position16>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1604" Column="12" TopLine="1592"/>
+        <Caret Line="1602" Column="12" TopLine="1590"/>
       </Position16>
       <Position17>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1603" Column="12" TopLine="1591"/>
+        <Caret Line="1601" Column="12" TopLine="1589"/>
       </Position17>
       <Position18>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1602" Column="12" TopLine="1590"/>
+        <Caret Line="1600" Column="12" TopLine="1588"/>
       </Position18>
       <Position19>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1601" Column="12" TopLine="1589"/>
+        <Caret Line="1599" Column="12" TopLine="1587"/>
       </Position19>
       <Position20>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1600" Column="12" TopLine="1588"/>
+        <Caret Line="1598" Column="12" TopLine="1586"/>
       </Position20>
       <Position21>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1599" Column="12" TopLine="1587"/>
+        <Caret Line="1597" Column="12" TopLine="1585"/>
       </Position21>
       <Position22>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1598" Column="12" TopLine="1586"/>
+        <Caret Line="1596" Column="12" TopLine="1584"/>
       </Position22>
       <Position23>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1597" Column="12" TopLine="1585"/>
+        <Caret Line="1595" Column="12" TopLine="1583"/>
       </Position23>
       <Position24>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1596" Column="12" TopLine="1584"/>
+        <Caret Line="1594" Column="12" TopLine="1582"/>
       </Position24>
       <Position25>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1595" Column="12" TopLine="1583"/>
+        <Caret Line="1593" Column="12" TopLine="1581"/>
       </Position25>
       <Position26>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1594" Column="12" TopLine="1582"/>
+        <Caret Line="1592" Column="12" TopLine="1580"/>
       </Position26>
       <Position27>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1593" Column="12" TopLine="1581"/>
+        <Caret Line="1591" Column="12" TopLine="1579"/>
       </Position27>
       <Position28>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1592" Column="12" TopLine="1580"/>
+        <Caret Line="826" Column="7" TopLine="815"/>
       </Position28>
       <Position29>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1591" Column="12" TopLine="1579"/>
+        <Caret Line="841" Column="7" TopLine="830"/>
       </Position29>
       <Position30>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="826" Column="7" TopLine="815"/>
+        <Caret Line="1876" Column="26" TopLine="1874"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

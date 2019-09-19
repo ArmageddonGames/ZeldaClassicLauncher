@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 268
+  Left = 523
   Height = 429
-  Top = 187
+  Top = 194
   Width = 586
   HorzScrollBar.Page = 585
   HorzScrollBar.Range = 585
@@ -17539,13 +17539,13 @@ object Form1: TForm1
     Hint = 'Allegro configuration properties, and drivers.'
     Top = 65
     Width = 586
-    ActivePage = TabSheet4
+    ActivePage = TabSheet3
     Align = alClient
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Images = ImageList1
     ParentFont = False
-    TabIndex = 3
+    TabIndex = 2
     TabOrder = 0
     OnChange = AllegroChange
     object TabSheet1: TTabSheet
@@ -18537,7 +18537,7 @@ object Form1: TForm1
     end
     object TabSheet3: TTabSheet
       Caption = 'Set Color Scheme'
-      ClientHeight = 297
+      ClientHeight = 295
       ClientWidth = 578
       ImageIndex = 6
       object Image2: TImage
@@ -30804,7 +30804,7 @@ object Form1: TForm1
         Constraints.MaxHeight = 24
         ItemHeight = 13
         Items.Strings = (
-          'Default'
+          'Classic'
           'Dark'
           'October'
           'Windows 98'
@@ -30821,6 +30821,7 @@ object Form1: TForm1
         Height = 167
         Top = 10
         Width = 106
+        HelpType = htKeyword
         Lines.Strings = (
           '[ZCL]'
           'zcres2=0'
@@ -36077,9 +36078,9 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label31: TLabel
-    Left = 5
+    Left = 392
     Height = 16
-    Top = 60
+    Top = 336
     Width = 191
     Caption = 'Graphics Driver (Full Screen): '
     Font.Height = -13
@@ -36087,6 +36088,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
+    Visible = False
     OnClick = Label22Click
   end
   object Process1: TProcess
