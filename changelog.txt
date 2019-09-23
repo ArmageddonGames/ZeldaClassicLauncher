@@ -3,6 +3,7 @@ ZCL Changelog
 Version 2.7.x
 
 2.7.2
+Fixed a bug where the zquest.cfg was being corrupted (in this version).
 Added DXGL Configuration to Video Drivers
 	( ZoriaRPG, 23rd September, 2019 )
 	

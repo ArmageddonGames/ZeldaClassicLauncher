@@ -36122,7 +36122,7 @@ object Form1: TForm1
         OnClick = Label22Click
       end
       object ComboBox6: TComboBox
-        Left = 125
+        Left = 124
         Height = 21
         Top = 264
         Width = 90

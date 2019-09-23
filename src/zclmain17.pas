@@ -288,7 +288,7 @@ begin
 
   if not fileexists('dxgl.cfg') then
   begin
-    memo1.Lines.SaveToFile('zquest.cfg'); //Creating the new config with defaults.
+    memo1.Lines.SaveToFile('dxgl.cfg'); //Creating the new config with defaults.
   end;
 
   if fileexists('ag.cfg') then
