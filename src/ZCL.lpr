@@ -4,7 +4,7 @@ program ZCL;
 
 uses
   Forms, Interfaces,
-  zclmain {Form1},
+  zclmain17 {Form1},
   RunTimeTypeInfoControls;
 
 
