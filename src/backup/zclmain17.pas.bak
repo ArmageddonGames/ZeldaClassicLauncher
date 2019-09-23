@@ -27,6 +27,7 @@ type
     ComboBox2: TComboBox;
     ComboBox3: TComboBox;
     ComboBox4: TComboBox;
+    ComboBox6: TComboBox;
     Image10: TImage;
     Image8: TImage;
     Image9: TImage;
@@ -39,6 +40,7 @@ type
     Label30: TLabel;
     Label31: TLabel;
     Label32: TLabel;
+    Label33: TLabel;
     multiinstance: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox34: TCheckBox;
@@ -61,6 +63,7 @@ type
     PageControl3: TPageControl;
     Process3: TProcess;
     SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
@@ -155,6 +158,8 @@ type
     procedure ComboBox2Change(Sender: TObject);
     procedure ComboBox3Change(Sender: TObject);
     procedure ComboBox4Change(Sender: TObject);
+    procedure ComboBox6Change(Sender: TObject);
+    procedure ComboBox6ChangeBounds(Sender: TObject);
     procedure currentschemeClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
@@ -163,6 +168,7 @@ type
     procedure Label22Click(Sender: TObject);
     procedure AllegroChange(Sender: TObject);
     procedure RVClick(Sender: TObject);
+    procedure DXGLClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure floatbrushChange(Sender: TObject);
@@ -174,6 +180,8 @@ type
     procedure owriteprotectChange(Sender: TObject);
     procedure scopyChange(Sender: TObject);
     procedure TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
+    procedure TabSheet7ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
     procedure tprotectChange(Sender: TObject);
     procedure ttipsChange(Sender: TObject);
@@ -210,6 +218,7 @@ type
     procedure zqsshotChange(Sender: TObject);
     procedure zqwinmodeChange(Sender: TObject);
     procedure zcvideodriver(Sender: TObject);
+    procedure dxglvideodriver(Sender: TObject);
     procedure zcvideodriverfs(Sender: TObject);
 
   private
@@ -223,6 +232,7 @@ var
   agcfg: Tinifile;
   zccfg: Tinifile;
   zquestcfg: Tinifile;
+  dxglcfg: Tinifile;
 
   //Open and Save
   fname: string;
@@ -276,11 +286,17 @@ begin
     memo1.Lines.SaveToFile('zquest.cfg'); //Creating the new config with defaults.
   end;
 
+  if not fileexists('dxgl.cfg') then
+  begin
+    memo1.Lines.SaveToFile('zquest.cfg'); //Creating the new config with defaults.
+  end;
+
   if fileexists('ag.cfg') then
   begin
     agcfg := Tinifile.Create('ag.cfg');
     zccfg := Tinifile.Create('zc.cfg');
     zquestcfg := Tinifile.Create('zquest.cfg');
+    dxglcfg := Tinifile.Create('dxgl.cfg');
     ZCResX := zccfg.readstring('zeldadx', 'resx', '640');
     ZCResY := zccfg.readstring('zeldadx', 'resy', '480');
     //Hardcoded Romview settings
@@ -835,6 +851,18 @@ begin
 
     //Video Drivers (Windowed, Windows)
     {$IFDEF WIN32}
+    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-fullscreen.cfg' then
+    begin
+      ComboBox6.Text := 'Stretch';
+    end;
+   if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
+    begin
+      ComboBox6.Text := 'Aspect Stretch';
+    end;
+    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg' then
+    begin
+      ComboBox6.Text := 'Correct Ratio';
+    end;
 
     if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
     begin
@@ -924,6 +952,20 @@ begin
     //end;
 
     //Video Drivers (Fullscreen, Windows)
+    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-fullscreen.cfg' then
+    begin
+      ComboBox6.Text := 'Stretch';
+    end;
+   if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
+    begin
+      ComboBox6.Text := 'Aspect Stretch';
+    end;
+    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg'  then
+    begin
+      ComboBox6.Text := 'Correct Ratio';
+    end;
+
+    //Video Drivers (Fullscreen, Windows)
     if zquestcfg.readstring('graphics', 'gfx_card', '') = 'DXAC' then
     begin
       ComboBox4.Text := 'DirectDraw';
@@ -948,6 +990,8 @@ begin
     begin
       ComboBox4.Text := 'GDI (Slow)';
     end;
+
+
     //end ZQuest
     {$ENDIF}
 
@@ -1109,6 +1153,25 @@ begin
     label23.Visible := True;
     speedbutton1.Enabled := False;
     speedbutton2.Enabled := False;
+  end;
+{$endif}
+
+{$ifdef win32}
+  if fileexists('dxgl.dll') or fileexists('ddraw.dll') then
+  begin
+  end
+  else
+  begin
+    label23.Visible := True;
+    speedbutton4.Enabled := False;
+  end;
+  if fileexists('dxgl.dll')  then
+  begin
+      speedbutton4.Caption := 'Enable';
+  end;
+  if fileexists('ddraw.dll')  then
+  begin
+      speedbutton4.Caption := 'Disable';
   end;
 {$endif}
 
@@ -1568,6 +1631,34 @@ begin
   {$ENDIF}
 end;
 
+procedure TForm1.ComboBox6Change(Sender: TObject);
+begin
+  {$IFDEF WIN32}
+  if ComboBox6.Text = 'Stretch' then
+  begin
+    dxglcfg.writestring('display', 'Include', 'dxgl-fullscreen.cfg');
+  end;
+
+  if ComboBox6.Text = 'Aspect Stretch' then
+  begin
+    dxglcfg.writestring('display', 'Include', 'dxgl-aspect.cfg');
+  end;
+  if ComboBox6.Text = 'Correct Ratio' then
+  begin
+    dxglcfg.writestring('display', 'Include', 'dxgl-aspect-zc-43-scale.cfg');
+  end;
+
+  {$ENDIF}
+   {$IFDEF LINUX}
+	//not for Linux
+  {$ENDIF}
+end;
+
+procedure TForm1.ComboBox6ChangeBounds(Sender: TObject);
+begin
+
+end;
+
 
 procedure TForm1.currentschemeClick(Sender: TObject);
 begin
@@ -1633,6 +1724,73 @@ begin
 {$ENDIF}
 
 end;
+
+procedure TForm1.DXGLClick(Sender: TObject);
+begin
+	{$IFDEF LINUX}
+	//
+
+	{$ENDIF}
+
+	{$IFDEF WIN32}
+	if not fileexists('ddraw.dll') then
+	begin
+               // TObject.Caption = 'Enable';
+		if fileexists('dxgl.dll') then
+		begin
+			if RenameFile('dxgl.dll', 'ddraw.dll') then
+			begin
+                             ShowMessage('DXGL is now Enabled');
+                             Speedbutton4.Caption := 'Disable';
+                             agcfg.writestring('dxgl', 'use_dxgl', '1');
+			end
+			else
+			begin
+                             ShowMessage('DXGL Libraries are Missing');
+				//agcfg.writestring('dxgl', 'use_dxgl', '0');
+			end
+
+		end
+	end
+	else
+	begin
+		if not fileexists('dxgl.dll') then
+		begin
+			if fileexists('ddraw.dll') then
+			begin
+				if RenameFile('ddraw.dll', 'dxgl.dll') then
+				begin
+                                        Speedbutton4.Caption := 'Enable';
+                                        ShowMessage('DXGL is now Disabled');
+					agcfg.writestring('dxgl', 'use_dxgl', '0');
+				end
+				else
+				begin
+                                     ShowMessage('DXGL Libraries are Missing');
+					//agcfg.writestring('dxgl', 'use_dxgl', '1');
+				end
+
+			end
+		end
+	end;
+
+	{$ENDIF}
+
+	//OSX
+
+	{$IFDEF BSD}
+	  //process3.CommandLine := './romview' + zqsound;
+	  //process3.Execute;
+
+	{$ENDIF}
+
+	{$IFDEF DARWIN}
+	  //process3.CommandLine := './romview' + zqsound;
+	  //process3.Execute;
+
+	{$ENDIF}
+end;
+
 procedure TForm1.Button2Click(Sender: TObject);
 begin
   try
@@ -1774,6 +1932,12 @@ begin
 end;
 
 procedure TForm1.TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+
+end;
+
+procedure TForm1.TabSheet7ContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: Boolean);
 begin
 
@@ -2025,6 +2189,11 @@ begin
     zccfg.writestring('graphics', 'gfx_cardw', 'VBAF');
   end;
   {$ENDIF}
+end;
+
+procedure TForm1.dxglvideodriver(Sender: TObject);
+begin
+
 end;
 
 

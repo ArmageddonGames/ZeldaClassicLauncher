@@ -49,7 +49,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="4">
+    <Units Count="3">
       <Unit0>
         <Filename Value="ZCL.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -67,154 +67,146 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="1874"/>
-        <CursorPos X="30" Y="1876"/>
+        <TopLine Value="1940"/>
+        <CursorPos X="3" Y="1943"/>
         <UsageCount Value="208"/>
         <Bookmarks Count="2">
           <Item0 ID="1"/>
-          <Item1 X="24" Y="1454"/>
+          <Item1 X="24" Y="1504"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit1>
       <Unit2>
-        <Filename Value="zctitle.pas"/>
-        <ComponentName Value="Form2"/>
-        <TopLine Value="44"/>
-        <CursorPos X="3" Y="59"/>
-        <UsageCount Value="12"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit2>
-      <Unit3>
         <Filename Value="zscript.pas"/>
         <ComponentName Value="Form2"/>
         <ResourceBaseClass Value="Form"/>
         <CursorPos X="3" Y="206"/>
-        <UsageCount Value="15"/>
+        <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit3>
+      </Unit2>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1529" Column="4" TopLine="1527"/>
+        <Caret Line="965" Column="84" TopLine="946"/>
       </Position1>
       <Position2>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1564" Column="18" TopLine="1552"/>
+        <Caret Line="1601" Column="33" TopLine="1593"/>
       </Position2>
       <Position3>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2027" Column="18" TopLine="2015"/>
+        <Caret Line="1486" Column="78" TopLine="1477"/>
       </Position3>
       <Position4>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2030" Column="6" TopLine="2018"/>
+        <Caret Line="290" Column="22" TopLine="285"/>
       </Position4>
       <Position5>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2027" TopLine="2021"/>
+        <Caret Line="1634" Column="3" TopLine="1632"/>
       </Position5>
       <Position6>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1564" Column="18" TopLine="1552"/>
+        <Caret Line="2128" Column="3" TopLine="2125"/>
       </Position6>
       <Position7>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1563" TopLine="1552"/>
+        <Caret Line="1935" Column="3" TopLine="1932"/>
       </Position7>
       <Position8>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="2603" TopLine="2579"/>
+        <Caret Line="1934" Column="3" TopLine="1931"/>
       </Position8>
       <Position9>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1609" Column="12" TopLine="1597"/>
+        <Caret Line="1933" Column="3" TopLine="1930"/>
       </Position9>
       <Position10>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1608" Column="12" TopLine="1596"/>
+        <Caret Line="1932" Column="3" TopLine="1929"/>
       </Position10>
       <Position11>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1607" Column="12" TopLine="1595"/>
+        <Caret Line="1931" Column="3" TopLine="1928"/>
       </Position11>
       <Position12>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1606" Column="12" TopLine="1594"/>
+        <Caret Line="1930" Column="3" TopLine="1927"/>
       </Position12>
       <Position13>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1605" Column="12" TopLine="1593"/>
+        <Caret Line="1929" Column="3" TopLine="1926"/>
       </Position13>
       <Position14>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1604" Column="12" TopLine="1592"/>
+        <Caret Line="1928" Column="3" TopLine="1925"/>
       </Position14>
       <Position15>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1603" Column="12" TopLine="1591"/>
+        <Caret Line="1927" Column="3" TopLine="1924"/>
       </Position15>
       <Position16>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1602" Column="12" TopLine="1590"/>
+        <Caret Line="1926" Column="3" TopLine="1923"/>
       </Position16>
       <Position17>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1601" Column="12" TopLine="1589"/>
+        <Caret Line="1925" Column="3" TopLine="1922"/>
       </Position17>
       <Position18>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1600" Column="12" TopLine="1588"/>
+        <Caret Line="1924" Column="3" TopLine="1921"/>
       </Position18>
       <Position19>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1599" Column="12" TopLine="1587"/>
+        <Caret Line="1923" Column="3" TopLine="1920"/>
       </Position19>
       <Position20>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1598" Column="12" TopLine="1586"/>
+        <Caret Line="1922" Column="3" TopLine="1919"/>
       </Position20>
       <Position21>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1597" Column="12" TopLine="1585"/>
+        <Caret Line="1921" Column="3" TopLine="1918"/>
       </Position21>
       <Position22>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1596" Column="12" TopLine="1584"/>
+        <Caret Line="1920" Column="3" TopLine="1917"/>
       </Position22>
       <Position23>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1595" Column="12" TopLine="1583"/>
+        <Caret Line="1919" Column="3" TopLine="1916"/>
       </Position23>
       <Position24>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1594" Column="12" TopLine="1582"/>
+        <Caret Line="1918" Column="3" TopLine="1915"/>
       </Position24>
       <Position25>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1593" Column="12" TopLine="1581"/>
+        <Caret Line="1917" Column="3" TopLine="1914"/>
       </Position25>
       <Position26>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1592" Column="12" TopLine="1580"/>
+        <Caret Line="1935" Column="3" TopLine="1932"/>
       </Position26>
       <Position27>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1591" Column="12" TopLine="1579"/>
+        <Caret Line="1695" Column="3" TopLine="1693"/>
       </Position27>
       <Position28>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="826" Column="7" TopLine="815"/>
+        <Caret Line="1943" Column="3" TopLine="1940"/>
       </Position28>
       <Position29>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="841" Column="7" TopLine="830"/>
+        <Caret Line="1944" Column="3" TopLine="1941"/>
       </Position29>
       <Position30>
         <Filename Value="zclmain17.pas"/>
-        <Caret Line="1876" Column="26" TopLine="1874"/>
+        <Caret Line="1943" Column="3" TopLine="1940"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>

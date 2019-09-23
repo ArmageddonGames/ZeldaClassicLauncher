@@ -1,5 +1,20 @@
 ZCL Changelog 
 
+Version 2.7.x
+
+2.7.2
+Added DXGL Configuration to Video Drivers
+	( ZoriaRPG, 23rd September, 2019 )
+	
+2.7.1
+Fixed preview of Dark and October themes.
+Changed 'Default' theme to 'Classic' theme.
+	( ZoriaRPG, 19th September, 2019 )
+	
+2.7.0
+Segregated ZC Player and ZQ GFX Drivers
+	( ZoriaRPG, 18th July, 2019 )
+
 Version 2.6.x
 
 2.6.9
