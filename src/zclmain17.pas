@@ -854,14 +854,18 @@ begin
     if dxglcfg.readstring('display', 'Include', '') = 'dxgl-fullscreen.cfg' then
     begin
       ComboBox6.Text := 'Stretch';
-    end;
-   if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
+    end
+   else if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
     begin
       ComboBox6.Text := 'Aspect Stretch';
-    end;
-    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg' then
+    end
+    else if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg' then
     begin
       ComboBox6.Text := 'Correct Ratio';
+    end
+    else
+    begin
+       ComboBox6.Text := 'Missing DLLs';
     end;
 
     if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
