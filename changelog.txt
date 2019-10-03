@@ -2,6 +2,12 @@ ZCL Changelog
 
 Version 2.7.x
 
+2.7.3
+Updated labels for tabs.
+Added a graphic for the save file button.
+Added a button to select the current .sav file for ZC Player.
+	( ZoriaRPG, 3rd October, 2019 )
+	
 2.7.2
 Fixed a bug where the zquest.cfg was being corrupted (in this version).
 Added DXGL Configuration to Video Drivers
