@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 466
+  Left = 692
   Height = 429
-  Top = 91
+  Top = 143
   Width = 586
   HorzScrollBar.Page = 585
   HorzScrollBar.Range = 585
@@ -17964,9 +17964,9 @@ object Form1: TForm1
       end
       object SpeedButton5: TSpeedButton
         Left = 372
-        Height = 40
+        Height = 39
         Top = 254
-        Width = 200
+        Width = 190
         Caption = 'Select Save (.sav) File'
         Font.Height = -13
         Font.Name = 'Arial'
@@ -36454,7 +36454,8 @@ object Form1: TForm1
   object opennow: TOpenDialog
     DefaultExt = '.txt'
     Filter = 'Text|*.txt'
-    left = 464
+    left = 480
+    top = 16
   end
   object saveme: TSaveDialog
     DefaultExt = '.txt'

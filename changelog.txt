@@ -3,6 +3,7 @@ ZCL Changelog
 Version 2.7.x
 
 2.7.3
+Fix alignment of Select Save File button.
 Updated labels for tabs.
 Added a graphic for the save file button.
 Added a button to select the current .sav file for ZC Player.
