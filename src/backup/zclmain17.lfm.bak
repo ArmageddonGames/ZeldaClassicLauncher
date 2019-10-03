@@ -12018,6 +12018,7 @@ object Form1: TForm1
     ParentFont = False
     Transparent = False
     Visible = False
+    OnClick = Label23Click
   end
   object zclassic: TImage
     Left = 104
@@ -17539,17 +17540,17 @@ object Form1: TForm1
     Hint = 'Allegro configuration properties, and drivers.'
     Top = 65
     Width = 586
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Images = ImageList1
     ParentFont = False
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     OnChange = AllegroChange
     object TabSheet1: TTabSheet
-      Caption = 'Zelda Classic'
+      Caption = 'ZC Player'
       ClientHeight = 295
       ClientWidth = 578
       ImageIndex = 5
@@ -18108,7 +18109,7 @@ object Form1: TForm1
       end
     end
     object TabSheet2: TTabSheet
-      Caption = 'Zquest'
+      Caption = 'ZQuest Editor'
       ClientHeight = 295
       ClientWidth = 578
       ImageIndex = 4
@@ -18682,7 +18683,7 @@ object Form1: TForm1
       end
     end
     object TabSheet3: TTabSheet
-      Caption = 'Set Color Scheme'
+      Caption = 'Set Colour Scheme'
       ClientHeight = 295
       ClientWidth = 578
       ImageIndex = 6

@@ -21301,9 +21301,9 @@ LazarusResources.Add('TForm1','FORMDATA',[
   +'@##:#:#:@:##:::::#:::::'#12'Proportional'#9#7'Stretch'#9#7'Visible'#8#0#0#12
   +'TPageControl'#7'Allegro'#4'Left'#2#0#6'Height'#3'B'#1#4'Hint'#6'.Allegro co'
   +'nfiguration properties, and drivers.'#3'Top'#2'A'#5'Width'#3'J'#2#10'Active'
-  +'Page'#7#9'TabSheet2'#5'Align'#7#8'alClient'#11'Font.Height'#2#245#9'Font.Na'
+  +'Page'#7#9'TabSheet1'#5'Align'#7#8'alClient'#11'Font.Height'#2#245#9'Font.Na'
   +'me'#6#13'MS Sans Serif'#6'Images'#7#10'ImageList1'#10'ParentFont'#8#8'TabIn'
-  +'dex'#2#1#8'TabOrder'#2#0#8'OnChange'#7#13'AllegroChange'#0#9'TTabSheet'#9'T'
+  +'dex'#2#0#8'TabOrder'#2#0#8'OnChange'#7#13'AllegroChange'#0#9'TTabSheet'#9'T'
   +'abSheet1'#7'Caption'#6#9'ZC Player'#12'ClientHeight'#3''''#1#11'ClientWidth'
   +#3'B'#2#10'ImageIndex'#2#5#0#6'TLabel'#6'Label1'#4'Left'#2#4#6'Height'#2#16#3
   +'Top'#2#1#5'Width'#2'X'#7'Caption'#6#12'Screen Mode:'#11'Font.Height'#2#243#9

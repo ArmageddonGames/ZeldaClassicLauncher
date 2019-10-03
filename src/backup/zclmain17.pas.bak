@@ -169,6 +169,7 @@ type
     procedure Label1Click(Sender: TObject);
     procedure Label22Click(Sender: TObject);
     procedure AllegroChange(Sender: TObject);
+    procedure Label23Click(Sender: TObject);
     procedure RVClick(Sender: TObject);
     procedure DXGLClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -1699,6 +1700,11 @@ begin
 end;
 
 procedure TForm1.AllegroChange(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Label23Click(Sender: TObject);
 begin
 
 end;
