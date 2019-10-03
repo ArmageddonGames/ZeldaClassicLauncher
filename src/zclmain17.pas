@@ -64,6 +64,7 @@ type
     Process3: TProcess;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
@@ -137,6 +138,7 @@ type
     zeldanew: TImage;
     zquestopen: TOpenDialog;
     opennow: TOpenDialog;
+
     Page2: TPage;
     Page3: TPage;
     Page4: TPage;
@@ -220,7 +222,7 @@ type
     procedure zcvideodriver(Sender: TObject);
     procedure dxglvideodriver(Sender: TObject);
     procedure zcvideodriverfs(Sender: TObject);
-
+    procedure getsavefile(Sender: TObject);
   private
     { Private declarations }
   public
@@ -233,6 +235,8 @@ var
   zccfg: Tinifile;
   zquestcfg: Tinifile;
   dxglcfg: Tinifile;
+
+  savFile:string;
 
   //Open and Save
   fname: string;
@@ -2200,6 +2204,15 @@ begin
 
 end;
 
+procedure TForm1.getsavefile(Sender: TObject);
+begin
+  opennow.Filter := 'ZC Save file (*.*)|*.sav';
+  opennow.Execute;
+  savFile := opennow.FileName;
+  begin if savFile <> '' then
+     zccfg.writestring('SAVEFILE', 'save_filename', savFile);
+    end
+end;
 
 //Fullscreen, Windows
 procedure TForm1.zcvideodriverfs(Sender: TObject);

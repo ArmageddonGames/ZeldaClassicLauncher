@@ -64,6 +64,7 @@ type
     Process3: TProcess;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
@@ -137,6 +138,7 @@ type
     zeldanew: TImage;
     zquestopen: TOpenDialog;
     opennow: TOpenDialog;
+
     Page2: TPage;
     Page3: TPage;
     Page4: TPage;
@@ -220,7 +222,7 @@ type
     procedure zcvideodriver(Sender: TObject);
     procedure dxglvideodriver(Sender: TObject);
     procedure zcvideodriverfs(Sender: TObject);
-
+    procedure getsavefile(Sender: TObject);
   private
     { Private declarations }
   public
@@ -233,6 +235,8 @@ var
   zccfg: Tinifile;
   zquestcfg: Tinifile;
   dxglcfg: Tinifile;
+
+  savFile:string;
 
   //Open and Save
   fname: string;
@@ -851,17 +855,21 @@ begin
 
     //Video Drivers (Windowed, Windows)
     {$IFDEF WIN32}
-    IF dxglcfg.readstring('display', 'Include', '') = 'dxgl-fullscreen.cfg' then
+    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-fullscreen.cfg' then
     begin
       ComboBox6.Text := 'Stretch';
     end
-   ELSE IF dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
+   else if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
     begin
       ComboBox6.Text := 'Aspect Stretch';
-    end;
-    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg' then
+    end
+    else if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg' then
     begin
       ComboBox6.Text := 'Correct Ratio';
+    end
+    else
+    begin
+       ComboBox6.Text := 'Missing DLLs';
     end;
 
     if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
@@ -2196,6 +2204,15 @@ begin
 
 end;
 
+procedure TForm1.getsavefile(Sender: TObject);
+begin
+  opennow.Filter := 'ZC Save file (*.*)|*.sav';
+  opennow.Execute;
+  savFile := opennow.FileName;
+  begin if savFile <> '' then
+     zccfg.writestring('SAVEFILE', 'save_filename', savFile);
+    end
+end;
 
 //Fullscreen, Windows
 procedure TForm1.zcvideodriverfs(Sender: TObject);
