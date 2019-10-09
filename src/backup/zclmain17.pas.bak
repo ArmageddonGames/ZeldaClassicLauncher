@@ -28,6 +28,7 @@ type
     ComboBox3: TComboBox;
     ComboBox4: TComboBox;
     ComboBox6: TComboBox;
+    currentzcplayerscheme: TImage;
     Image10: TImage;
     Image11: TImage;
     Image12: TImage;
@@ -56,6 +57,7 @@ type
     Image5: TImage;
     Image6: TImage;
     currentscheme: TImage;
+
     Label13: TLabel;
     Label19: TLabel;
     Label20: TLabel;
@@ -97,6 +99,7 @@ type
     bcminute: TComboBox;
     scopy: TComboBox;
     tehscheme: TComboBox;
+    zcplayerscheme: TComboBox;
     zqwinmode: TComboBox;
     scalemode: TComboBox;
     zqfpslimit: TComboBox;
@@ -165,6 +168,7 @@ type
     procedure ComboBox4Change(Sender: TObject);
     procedure ComboBox6Change(Sender: TObject);
     procedure ComboBox6ChangeBounds(Sender: TObject);
+    procedure currentzcplayerschemeClick(Sender: TObject);
     procedure currentschemeClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
@@ -186,6 +190,8 @@ type
     procedure palcycChange(Sender: TObject);
     procedure owriteprotectChange(Sender: TObject);
     procedure scopyChange(Sender: TObject);
+    procedure TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
     procedure TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
     procedure TabSheet7ContextPopup(Sender: TObject; MousePos: TPoint;
@@ -197,6 +203,7 @@ type
     procedure uncompChange(Sender: TObject);
     procedure usestaticChange(Sender: TObject);
     procedure tehschemeChange(Sender: TObject);
+    procedure zcplayerschemeChange(Sender: TObject);
     procedure zqshowfpsChange(Sender: TObject);
     procedure zqfpslimitChange(Sender: TObject);
     procedure scrmodezcChange(Sender: TObject);
@@ -229,6 +236,7 @@ type
     procedure zcvideodriverfs(Sender: TObject);
     procedure getsavefile(Sender: TObject);
     procedure getthemefile(Sender: TObject);
+    procedure getzcplayerthemefile(Sender: TObject);
   private
     { Private declarations }
   public
@@ -244,6 +252,7 @@ var
 
   savFile:string;
   themeFile:string;
+  zcplayerthemeFile:string;
   //Open and Save
   fname: string;
 
@@ -1087,43 +1096,84 @@ begin
 
     {$ENDIF}
 
-    //Color Scheme
+    //ZCPlayer Color Scheme
     if zccfg.readString('zeldadx', 'gui_colorset', '') = '0' then
+    begin
+      zcplayerscheme.Text := 'Classic';
+      currentzcplayerscheme.Picture := image2.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '1' then
+    begin
+      zcplayerscheme.Text := 'Windows 98';
+      currentzcplayerscheme.Picture := image3.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '687' then
+    begin
+      zcplayerscheme.Text := 'Gold';
+      currentzcplayerscheme.Picture := image4.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '3' then
+    begin
+      zcplayerscheme.Text := 'Blue';
+      currentzcplayerscheme.Picture := image5.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '4104' then
+    begin
+      zcplayerscheme.Text := 'Pink';
+      currentzcplayerscheme.Picture := image6.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '2019' then
+    begin
+      zcplayerscheme.Text := 'Dark';
+      currentzcplayerscheme.Picture := image9.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '201018' then
+    begin
+      zcplayerscheme.Text := 'October';
+      currentzcplayerscheme.Picture := image10.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '99' then
+    begin
+      zcplayerscheme.Text := 'User';
+      currentzcplayerscheme.Picture := image12.Picture;
+    end;
+    // ZQuest Color Scheme
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '0' then
     begin
       tehscheme.Text := 'Classic';
       currentscheme.Picture := image2.Picture;
     end;
-    if zccfg.readString('zeldadx', 'gui_colorset', '') = '1' then
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '1' then
     begin
       tehscheme.Text := 'Windows 98';
       currentscheme.Picture := image3.Picture;
     end;
-    if zccfg.readString('zeldadx', 'gui_colorset', '') = '687' then
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '687' then
     begin
       tehscheme.Text := 'Gold';
       currentscheme.Picture := image4.Picture;
     end;
-    if zccfg.readString('zeldadx', 'gui_colorset', '') = '3' then
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '3' then
     begin
       tehscheme.Text := 'Blue';
       currentscheme.Picture := image5.Picture;
     end;
-    if zccfg.readString('zeldadx', 'gui_colorset', '') = '4104' then
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '4104' then
     begin
       tehscheme.Text := 'Pink';
       currentscheme.Picture := image6.Picture;
     end;
-    if zccfg.readString('zeldadx', 'gui_colorset', '') = '2019' then
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '2019' then
     begin
       tehscheme.Text := 'Dark';
       currentscheme.Picture := image9.Picture;
     end;
-    if zccfg.readString('zeldadx', 'gui_colorset', '') = '201018' then
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '201018' then
     begin
       tehscheme.Text := 'October';
       currentscheme.Picture := image10.Picture;
     end;
-    if zccfg.readString('zeldadx', 'gui_colorset', '') = '99' then
+    if zquestcfg.readString('zquest', 'gui_colorset', '') = '99' then
     begin
       tehscheme.Text := 'User';
       currentscheme.Picture := image12.Picture;
@@ -1679,6 +1729,11 @@ begin
 end;
 
 
+procedure TForm1.currentzcplayerschemeClick(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.currentschemeClick(Sender: TObject);
 begin
 
@@ -1960,6 +2015,12 @@ begin
   end;
 end;
 
+procedure TForm1.TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
+begin
+
+end;
+
 procedure TForm1.TabSheet5ContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: Boolean);
 begin
@@ -2074,53 +2135,105 @@ begin
   end;
 end;
 
+procedure TForm1.zcplayerschemeChange(Sender: TObject);
+begin
+  if zcplayerscheme.Text = 'Classic' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '0');
+
+    currentzcplayerscheme.Picture := image2.Picture;
+  end;
+  if zcplayerscheme.Text = 'Dark' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '2019');
+
+    currentzcplayerscheme.Picture := image9.Picture;
+  end;
+  if zcplayerscheme.Text = 'October' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '201018');
+
+    currentzcplayerscheme.Picture := image10.Picture;
+  end;
+  if zcplayerscheme.Text = 'Windows 98' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '1');
+
+    currentzcplayerscheme.Picture := image3.Picture;
+  end;
+  if zcplayerscheme.Text = 'Gold' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '687');
+
+    currentzcplayerscheme.Picture := image4.Picture;
+  end;
+  if zcplayerscheme.Text = 'Blue' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '3');
+
+    currentzcplayerscheme.Picture := image5.Picture;
+  end;
+  if zcplayerscheme.Text = 'Pink' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '4104');
+
+    currentzcplayerscheme.Picture := image6.Picture;
+  end;
+  if zcplayerscheme.Text = 'User' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '99');
+
+    currentzcplayerscheme.Picture := image12.Picture;
+  end;
+end;
+
 procedure TForm1.tehschemeChange(Sender: TObject);
 begin
   if tehscheme.Text = 'Classic' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '0');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '0');
     currentscheme.Picture := image2.Picture;
   end;
   if tehscheme.Text = 'Dark' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '2019');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '2019');
     currentscheme.Picture := image9.Picture;
   end;
   if tehscheme.Text = 'October' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '201018');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '201018');
     currentscheme.Picture := image10.Picture;
   end;
   if tehscheme.Text = 'Windows 98' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '1');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '1');
     currentscheme.Picture := image3.Picture;
   end;
   if tehscheme.Text = 'Gold' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '687');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '687');
     currentscheme.Picture := image4.Picture;
   end;
   if tehscheme.Text = 'Blue' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '3');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '3');
     currentscheme.Picture := image5.Picture;
   end;
   if tehscheme.Text = 'Pink' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '4104');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '4104');
     currentscheme.Picture := image6.Picture;
   end;
   if tehscheme.Text = 'User' then
   begin
-    zccfg.WriteString('zeldadx', 'gui_colorset', '99');
+
     zquestcfg.WriteString('zquest', 'gui_colorset', '99');
     currentscheme.Picture := image12.Picture;
   end;
@@ -2247,11 +2360,21 @@ begin
   opennow.Execute;
   themeFile := opennow.FileName;
   begin if themeFile <> '' then
-     zccfg.writestring('Theme', 'theme_filename', themeFile);
+
      zquestcfg.writestring('Theme', 'theme_filename', themeFile);
     end
 end;
 
+procedure TForm1.getzcplayerthemefile(Sender: TObject);
+begin
+  opennow.Filter := 'ZC Save file (*.*)|*.ztheme';
+  opennow.Execute;
+  zcplayerthemeFile := opennow.FileName;
+  begin if zcplayerthemeFile <> '' then
+     zccfg.writestring('Theme', 'theme_filename', zcplayerthemeFile);
+
+    end
+end;
 //Fullscreen, Windows
 procedure TForm1.zcvideodriverfs(Sender: TObject);
 begin
