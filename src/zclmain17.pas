@@ -40,6 +40,7 @@ type
     Label26: TLabel;
     Label27: TLabel;
     Label28: TLabel;
+    Label29: TLabel;
     Label30: TLabel;
     Label31: TLabel;
     Label32: TLabel;
@@ -70,6 +71,9 @@ type
     SpeedButton4: TSpeedButton;
     SpeedButton5: TSpeedButton;
     SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    SpeedButton8: TSpeedButton;
+    SpeedButton9: TSpeedButton;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
@@ -235,6 +239,8 @@ type
     procedure dxglvideodriver(Sender: TObject);
     procedure zcvideodriverfs(Sender: TObject);
     procedure getsavefile(Sender: TObject);
+    procedure loadzcplayermodule(Sender: TObject);
+    procedure loadzquestmodule(Sender: TObject);
     procedure getthemefile(Sender: TObject);
     procedure getzcplayerthemefile(Sender: TObject);
   private
@@ -251,6 +257,8 @@ var
   dxglcfg: Tinifile;
 
   savFile:string;
+  zmodZCPlayerFile:string;
+  zmodZQuestFile:string;
   themeFile:string;
   zcplayerthemeFile:string;
   //Open and Save
@@ -2344,6 +2352,16 @@ begin
 
 end;
 
+procedure TForm1.loadzquestmodule(Sender: TObject);
+begin
+  opennow.Filter := 'ZQuest Module file (*.*)|*.zmod';
+  opennow.Execute;
+  zmodZQuestFile := opennow.FileName;
+  begin if zmodZQuestFile <> '' then
+     zquestcfg.writestring('ZCMODULE', 'current_module', zmodZQuestFile);
+    end
+end;
+
 procedure TForm1.getsavefile(Sender: TObject);
 begin
   opennow.Filter := 'ZC Save file (*.*)|*.sav';
@@ -2354,9 +2372,19 @@ begin
     end
 end;
 
+procedure TForm1.loadzcplayermodule(Sender: TObject);
+begin
+  opennow.Filter := 'ZC Player Module file (*.*)|*.zmod';
+  opennow.Execute;
+  zmodZCPlayerFile := opennow.FileName;
+  begin if zmodZCPlayerFile <> '' then
+     zccfg.writestring('ZCMODULE', 'current_module', zmodZCPlayerFile);
+    end
+end;
+
 procedure TForm1.getthemefile(Sender: TObject);
 begin
-  opennow.Filter := 'ZC Save file (*.*)|*.ztheme';
+  opennow.Filter := 'ZC Player Theme file (*.*)|*.ztheme';
   opennow.Execute;
   themeFile := opennow.FileName;
   begin if themeFile <> '' then
@@ -2367,7 +2395,7 @@ end;
 
 procedure TForm1.getzcplayerthemefile(Sender: TObject);
 begin
-  opennow.Filter := 'ZC Save file (*.*)|*.ztheme';
+  opennow.Filter := 'ZQuest Editor Theme file (*.*)|*.ztheme';
   opennow.Execute;
   zcplayerthemeFile := opennow.FileName;
   begin if zcplayerthemeFile <> '' then
