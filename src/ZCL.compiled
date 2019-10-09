@@ -2,5 +2,4 @@
 <CONFIG>
   <Compiler Value="C:\lazarus\fpc\3.0.2\bin\i386-win32\fpc.exe" Date="1247519558"/>
   <Params Value=" -Pi386 -MDelphi -Sgi -CX -Os2 -XX -WG -l -vewnhilpbq -FuC:\lazarus\components\rtticontrols\lib\i386-win32\win32 -FuC:\lazarus\components\ideintf\units\i386-win32\win32 -FuC:\lazarus\components\lazcontrols\lib\i386-win32\win32 -FuC:\lazarus\lcl\units\i386-win32\win32 -FuC:\lazarus\lcl\units\i386-win32 -FuC:\lazarus\components\lazutils\lib\i386-win32 -FuC:\lazarus\packager\units\i386-win32 -FuE:\ZC\ZCLaunch\src\ -dLCL -dLCLwin32 ZCL.lpr"/>
-  <Complete Value="False"/>
 </CONFIG>
