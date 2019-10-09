@@ -29,6 +29,8 @@ type
     ComboBox4: TComboBox;
     ComboBox6: TComboBox;
     Image10: TImage;
+    Image11: TImage;
+    Image12: TImage;
     Image8: TImage;
     Image9: TImage;
     Label22: TLabel;
@@ -64,6 +66,8 @@ type
     Process3: TProcess;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
@@ -137,6 +141,7 @@ type
     zeldanew: TImage;
     zquestopen: TOpenDialog;
     opennow: TOpenDialog;
+
     Page2: TPage;
     Page3: TPage;
     Page4: TPage;
@@ -163,10 +168,12 @@ type
     procedure currentschemeClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure Label22Click(Sender: TObject);
     procedure AllegroChange(Sender: TObject);
+    procedure Label23Click(Sender: TObject);
     procedure RVClick(Sender: TObject);
     procedure DXGLClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -220,7 +227,8 @@ type
     procedure zcvideodriver(Sender: TObject);
     procedure dxglvideodriver(Sender: TObject);
     procedure zcvideodriverfs(Sender: TObject);
-
+    procedure getsavefile(Sender: TObject);
+    procedure getthemefile(Sender: TObject);
   private
     { Private declarations }
   public
@@ -234,6 +242,8 @@ var
   zquestcfg: Tinifile;
   dxglcfg: Tinifile;
 
+  savFile:string;
+  themeFile:string;
   //Open and Save
   fname: string;
 
@@ -288,7 +298,7 @@ begin
 
   if not fileexists('dxgl.cfg') then
   begin
-    memo1.Lines.SaveToFile('zquest.cfg'); //Creating the new config with defaults.
+    memo1.Lines.SaveToFile('dxgl.cfg'); //Creating the new config with defaults.
   end;
 
   if fileexists('ag.cfg') then
@@ -854,14 +864,18 @@ begin
     if dxglcfg.readstring('display', 'Include', '') = 'dxgl-fullscreen.cfg' then
     begin
       ComboBox6.Text := 'Stretch';
-    end;
-   if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
+    end
+   else if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect.cfg' then
     begin
       ComboBox6.Text := 'Aspect Stretch';
-    end;
-    if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg' then
+    end
+    else if dxglcfg.readstring('display', 'Include', '') = 'dxgl-aspect-zc-43-scale.cfg' then
     begin
       ComboBox6.Text := 'Correct Ratio';
+    end
+    else
+    begin
+       ComboBox6.Text := 'Missing DLLs';
     end;
 
     if zccfg.readstring('graphics', 'gfx_cardw', '') = 'DXAC' then
@@ -1108,6 +1122,11 @@ begin
     begin
       tehscheme.Text := 'October';
       currentscheme.Picture := image10.Picture;
+    end;
+    if zccfg.readString('zeldadx', 'gui_colorset', '') = '99' then
+    begin
+      tehscheme.Text := 'User';
+      currentscheme.Picture := image12.Picture;
     end;
 {$IFDEF WIN32}
     if zccfg.ReadString('graphics', 'disable_direct_updating', 'unset') = 'unset' then
@@ -1675,6 +1694,11 @@ begin
 
 end;
 
+procedure TForm1.Image5Click(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.Image6Click(Sender: TObject);
 begin
 
@@ -1691,6 +1715,11 @@ begin
 end;
 
 procedure TForm1.AllegroChange(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.Label23Click(Sender: TObject);
 begin
 
 end;
@@ -2089,6 +2118,12 @@ begin
     zquestcfg.WriteString('zquest', 'gui_colorset', '4104');
     currentscheme.Picture := image6.Picture;
   end;
+  if tehscheme.Text = 'User' then
+  begin
+    zccfg.WriteString('zeldadx', 'gui_colorset', '99');
+    zquestcfg.WriteString('zquest', 'gui_colorset', '99');
+    currentscheme.Picture := image12.Picture;
+  end;
 end;
 
 procedure TForm1.zqshowfpsChange(Sender: TObject);
@@ -2196,6 +2231,26 @@ begin
 
 end;
 
+procedure TForm1.getsavefile(Sender: TObject);
+begin
+  opennow.Filter := 'ZC Save file (*.*)|*.sav';
+  opennow.Execute;
+  savFile := opennow.FileName;
+  begin if savFile <> '' then
+     zccfg.writestring('SAVEFILE', 'save_filename', savFile);
+    end
+end;
+
+procedure TForm1.getthemefile(Sender: TObject);
+begin
+  opennow.Filter := 'ZC Save file (*.*)|*.ztheme';
+  opennow.Execute;
+  themeFile := opennow.FileName;
+  begin if themeFile <> '' then
+     zccfg.writestring('Theme', 'theme_filename', themeFile);
+     zquestcfg.writestring('Theme', 'theme_filename', themeFile);
+    end
+end;
 
 //Fullscreen, Windows
 procedure TForm1.zcvideodriverfs(Sender: TObject);
