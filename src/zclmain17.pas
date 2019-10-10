@@ -1796,8 +1796,11 @@ begin
 {$ENDIF}
 
 {$IFDEF WIN32}
-  process3.CommandLine := './romview.exe' + zqsound;
-  process3.Execute;
+process3 := TProcess.Create(nil);
+process3.Executable := './romview/romview.exe';
+process3.Execute;
+//  process3.CommandLine := './romview/romview.exe' + zqsound;
+  ///process3.Execute;
 
 {$ENDIF}
 
