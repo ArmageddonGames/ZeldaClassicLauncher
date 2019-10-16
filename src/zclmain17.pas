@@ -182,6 +182,7 @@ type
     procedure Label22Click(Sender: TObject);
     procedure AllegroChange(Sender: TObject);
     procedure Label23Click(Sender: TObject);
+    procedure Label5Click(Sender: TObject);
     procedure RVClick(Sender: TObject);
     procedure DXGLClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -431,7 +432,7 @@ begin
     end;
 
     //ZC Skip Agn Logo
-    if zccfg.readstring('zeldadx', 'zcfast', '') = '1' then
+    if zccfg.readstring('zeldadx', 'skiplogo', '') = '1' then
     begin
       zcskiplogo.Text := 'Yes';
       Logo1 := '-fast ';
@@ -457,9 +458,9 @@ begin
     end;
 
     //ZC Multiple instances
-    if zccfg.readstring('ZCL', 'multiple_instances', '') = '1' then
+    if zccfg.readstring('zeldadx', 'multiple_instances', '') = '1' then
     begin
-      MultiZC := '-multiple ';
+
       multiinstance.Checked := True;
     end
     else
@@ -1787,6 +1788,11 @@ begin
 
 end;
 
+procedure TForm1.Label5Click(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.RVClick(Sender: TObject);
 begin
 {$IFDEF LINUX}
@@ -1931,13 +1937,13 @@ procedure TForm1.multiinstanceChange(Sender: TObject);
 begin
   if multiinstance.Checked then
   begin
-    agcfg.writestring('ZCL', 'multiple_instances', '1');
-    multizc := '-multiple ';
+    zccfg.writestring('zeldadx', 'multiple_instances', '1');
+
   end
   else
   begin
-    agcfg.writestring('ZCL', 'multiple_instances', '0');
-    multizc := '-multiple ';
+    zccfg.writestring('zeldadx', 'multiple_instances', '0');
+
   end;
 end;
 
@@ -2601,14 +2607,14 @@ begin
   begin
     Logo1 := '-fast ';
     //agcfg.writestring('ZCL', 'zcfast', '1');
-    zccfg.writestring('zeldadx', 'zcfast', '1');
+    zccfg.writestring('zeldadx', 'skiplogo', '1');
   end;
 
   if zcskiplogo.Text = 'No' then
   begin
     Logo1 := ' ';
     //agcfg.writestring('ZCL', 'zcfast', '0');
-    zccfg.writestring('zeldadx', 'zcfast', '0');
+    zccfg.writestring('zeldadx', 'skiplogo', '0');
   end;
 end;
 

@@ -1,12 +1,21 @@
 ZCL Changelog 
 
+Version 2.8.x
+
+2.8.0
+Convert ZC Player options 'Skip Logo' and 'Multiple Instances'
+to run off of zc.cfg and new ZC Player configs instead of using 
+command line switches.
+	Requires ZC Player builds after 16th October, 2019.
+	( ZoriaRPG, 16th October, 2019 )
+
 Version 2.7.x
 
 2.7.7
 Move RomView into a sub-directory and bundle old fonts.dat
 and allegro.lib with it so that it runs in 2,55.
 Change code from commandlibe process to exec process.
-	( ZoriaRPG, 910h October, 2019 )
+	( ZoriaRPG, 10th October, 2019 )
 
 2.7.6
 Added Load Module (.zmod) butons to both the ZC Player and
