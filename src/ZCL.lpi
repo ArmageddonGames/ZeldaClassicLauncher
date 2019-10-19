@@ -49,7 +49,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="ZCL.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -83,9 +83,14 @@
         <ComponentName Value="Form2"/>
         <ResourceBaseClass Value="Form"/>
         <CursorPos X="3" Y="206"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="1"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="C:/lazarus/fpc/3.0.2/units/i386-win32/allegro/demo/alex.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="2"/>
+      </Unit3>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
